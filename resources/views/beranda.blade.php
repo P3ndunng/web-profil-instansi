@@ -15,6 +15,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <!-- Google Fonts: Poppins 700 -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
 
   <!-- Vendor CSS Files -->
   <link href="themes/medicio/assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -28,6 +31,16 @@
 
   <!-- Template Main CSS File -->
   <link href="themes/medicio/assets/css/style.css" rel="stylesheet">
+
+  <link href="themes/medicio/assets/css/style.css" rel="stylesheet">
+
+    <style>
+    .card-orange  { background-color: #ff8243 !important; }
+    .card-blue    { background-color: #6495ed !important; }
+    .card-teal    { background-color: #4cb3ac !important; }
+    .card-maroon  { background-color: #8b0000 !important; }
+    </style>
+
 
   <!-- =======================================================
   * Template Name: Medicio
@@ -75,33 +88,61 @@
 <header id="header" class="d-flex align-items-center">
   <div class="container-fluid d-flex align-items-center justify-content-between">
 
-    <div class="logo d-flex align-items-center">
-      <img src="themes/medicio/assets/img/logo.png" alt="" id="logo-img">
-      <div class="instansi-text ms-2">
-        <h4 class="m-0">
-          BALAI BESAR PEMBIBITAN TERNAK UNGGUL <br>
-          HIJAUAN PAKAN TERNAK <br>
-          <span>DIREKTORAT JENDERAL PETERNAKAN DAN KESEHATAN HEWAN KEMENTAN</span>
-        </h4>
-      </div>
+    <!-- Logo dan Instansi -->
+    <div class="logo d-flex align-items-center" style="padding-left: 20px;">
+      <img src="themes/medicio/assets/img/logo.png" alt="Logo" id="logo-img" style="height: 100px;">
+
+      <!-- Garis Vertikal -->
+      <div class="vertical-line mx-2" id="logo-line" style="height: 60px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
+
+      <!-- Header Image -->
+      <img src="themes/medicio/assets/img/header.png" alt="Header Text Image" class="ms-2" style="width: 380px; max-height:60px;">
     </div>
 
+    <!-- Navbar -->
     <nav id="navbar" class="navbar">
       <ul>
         <li><a class="nav-link scrollto active" href="#beranda">BERANDA</a></li>
-        <li><a class="nav-link scrollto" href="#profil">PROFIL</a></li>
+
+        <!-- Dropdown Profil -->
+        <li class="dropdown">
+          <a href="#"><span>PROFIL</span> <i class="bi bi-chevron-down"></i></a>
+          <ul class="dropdown-menu">
+            <li><a href="#tentang">TENTANG BBPTUHPT</a></li>
+            <li><a href="#struktur">STRUKTUR ORGANISASI</a></li>
+            <li><a href="#sejarah">SEJARAH</a></li>
+            <li><a href="#visi">VISI & MISI</a></li>
+            <li><a href="#moto">MOTO DAN JANJI LAYANAN</a></li>
+            <li><a href="#tugas">TUGAS POKOK DAN FUNGSI</a></li>
+            <li><a href="#prestasi">PRESTASI</a></li>
+            <li><a href="#maklumat">MAKLUMAT PELAYANAN</a></li>
+            <li><a href="#sdm">SDM</a></li>
+            <li><a href="#kebijakan">KEBIJAKAN MUTU</a></li>
+            <li><a href="#gallery">GALLERY</a></li>
+          </ul>
+        </li>
+
         <li><a class="nav-link scrollto" href="#layanan">LAYANAN</a></li>
         <li><a class="nav-link scrollto" href="#informasi">INFORMASI PUBLIK</a></li>
         <li><a class="nav-link scrollto" href="#inovasi">INOVASI</a></li>
         <li><a class="nav-link scrollto" href="#unduh">UNDUH</a></li>
         <li><a class="nav-link scrollto" href="#kontak">KONTAK KAMI</a></li>
-        <li><a href="#" class="search-icon"><i class="bi bi-search"></i></a></li>
+
+        <!-- Search Icon -->
+        <li class="d-flex align-items-center">
+          <!-- Garis Vertikal kiri Search -->
+          <div class="vertical-line me-2" id="search-line" style="height: 30px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
+          <a href="#" class="search-icon"><i class="bi bi-search"></i></a>
+        </li>
       </ul>
+
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
 
   </div>
 </header>
+
+
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
@@ -122,143 +163,209 @@
 
   <main id="main">
 
-    <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
+   <!-- ======= Featured Services Section ======= -->
+<section id="featured-services" class="featured-services py-5">
+  <div class="container" data-aos="fade-up">
+
+    <!-- Judul -->
+    <div class="text-center mb-5">
+      <h3 class="fw-bold" style="color: #024422;">SELAMAT DATANG DI<br>BBPTUHPT Baturaden</h3>
+      <h4 class="fw-bold mt-3" style="color: #024422;">INFORMASI UNTUK ANDA</h4>
+      <p>Klik info lebih detil :</p>
+      <hr style="width: 60px; height: 2px; background: #000; margin: 10px auto;">
+    </div>
+
+    <!-- Kartu Informasi -->
+    <div class="row justify-content-center">
+      <!-- Kartu 1 -->
+      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+        <div class="icon-box card-orange w-100 text-center p-4 rounded-4">
+          <img src="themes/medicio/assets/img/produk.jpg" class="rounded-circle mb-3 card-img" alt="Produk">
+          <h5 class="text-white fw-bold text-uppercase">PRODUK DAN LAYANAN</h5>
+        </div>
+      </div>
+
+      <!-- Kartu 2 -->
+      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+        <div class="icon-box card-blue w-100 text-center p-4 rounded-4">
+          <img src="themes/medicio/assets/img/info.jpg" class="rounded-circle mb-3 card-img" alt="Informasi">
+          <h5 class="text-white fw-bold text-uppercase">PERMOHONAN INFORMASI</h5>
+        </div>
+      </div>
+
+      <!-- Kartu 3 -->
+      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+        <div class="icon-box card-teal w-100 text-center p-4 rounded-4">
+          <img src="themes/medicio/assets/img/harga.jpg" class="rounded-circle mb-3 card-img" alt="Harga">
+          <h5 class="text-white fw-bold text-uppercase">HARGA KOMODITAS TERNAK</h5>
+        </div>
+      </div>
+
+      <!-- Kartu 4 -->
+      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+        <div class="icon-box card-maroon w-100 text-center p-4 rounded-4">
+          <img src="themes/medicio/assets/img/kegiatan.jpg" class="rounded-circle mb-3 card-img" alt="Kegiatan">
+          <h5 class="text-white fw-bold text-uppercase">KEGIATAN BBPTUHPT</h5>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- ======= Layanan Kami Section ======= -->
+    <section id="layanan-kami" class="layanan-kami py-5">
+    <div class="container" data-aos="fade-up">
+        <div class="section-title text-center">
+        <h2>LAYANAN KAMI</h2>
+        <p>BBPTUHPT Baturraden mempunyai layanan terbaik untuk memenuhi kebutuhan anda</p>
+        <hr style="width: 60px; border: 2px solid #2d4e21; margin: 0 auto;">
+        </div>
+
+        <div class="row text-center mt-4">
+        <div class="col-md-3 mb-4">
+            <div class="card layanan-box h-100">
+            <div class="img-hover-zoom">
+                <img src="themes/medicio/assets/img/sapi.jpg" class="img-fluid rounded" alt="...">
+            </div>
+            <h5 class="mt-3 fw-bold">PEMBELIAN BIBIT TERNAK ONLINE</h5>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card layanan-box h-100">
+            <div class="img-hover-zoom">
+                <img src="themes/medicio/assets/img/balai.jpg" class="img-fluid rounded" alt="...">
+            </div>
+            <h5 class="mt-3 fw-bold">LAYANAN SEWA ASET BALAI</h5>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card layanan-box h-100">
+            <div class="img-hover-zoom">
+                <img src="themes/medicio/assets/img/bimtek.jpg" class="img-fluid rounded" alt="...">
+            </div>
+            <h5 class="mt-3 fw-bold">LAYANAN BIMBINGAN TEKNIS (BIMTEK)</h5>
+            </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+            <div class="card layanan-box h-100">
+            <div class="img-hover-zoom">
+                <img src="themes/medicio/assets/img/kegiatan.jpg" class="img-fluid rounded" alt="...">
+            </div>
+            <h5 class="mt-3 fw-bold">LAYANAN KONSULTASI DOKTER HEWAN</h5>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- ======= Informasi Terbaru Section ======= -->
+    <section id="informasi-terbaru" class="py-5 bg-light">
+    <div class="container" data-aos="fade-up">
+
+        <!-- Judul -->
+        <div class="row mb-4">
+        <div class="col-lg-3">
+            <h3 class="fw-bold text-dark">Informasi Terbaru</h3>
+        </div>
+        </div>
 
         <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-              <div class="icon"><i class="fas fa-heartbeat"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+        <!-- Sidebar Kategori -->
+        <div class="col-lg-3 mb-4">
+            <div class="list-group shadow rounded overflow-hidden">
+            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
+                <i class="fas fa-newspaper me-2"></i> Berita
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <i class="far fa-calendar-alt me-2"></i> Agenda
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-success text-white">
+                <i class="fas fa-bullhorn me-2"></i> Pengumuman
+            </a>
+            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                <i class="fas fa-book-open me-2"></i> Artikel
+            </a>
             </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <div class="icon"><i class="fas fa-pills"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <div class="icon"><i class="fas fa-thermometer"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia</p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-              <div class="icon"><i class="fas fa-dna"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis</p>
-            </div>
-          </div>
-
         </div>
 
-      </div>
-    </section><!-- End Featured Services Section -->
+        <!-- Konten Informasi -->
+        <div class="col-lg-9">
+            <div class="row g-4">
 
-    <!-- ======= Cta Section ======= -->
-    <section id="cta" class="cta">
-      <div class="container" data-aos="zoom-in">
-
-        <div class="text-center">
-          <h3>In an emergency? Need help now?</h3>
-          <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          <a class="cta-btn scrollto" href="#appointment">Make an Make an Appointment</a>
-        </div>
-
-      </div>
-    </section><!-- End Cta Section -->
-
-    <!-- ======= About Us Section ======= -->
-    <section id="about" class="about">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>About Us</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-6" data-aos="fade-right">
-            <img src="themes/medicio/assets/img/about.jpg" class="img-fluid" alt="">
-          </div>
-          <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-            <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
-            </p>
-            <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Us Section -->
-
-    <!-- ======= Counts Section ======= -->
-    <section id="counts" class="counts">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="fas fa-user-md"></i>
-              <span data-purecounter-start="0" data-purecounter-end="85" data-purecounter-duration="1" class="purecounter"></span>
-
-              <p><strong>Doctors</strong> consequuntur quae qui deca rode</p>
-              <a href="#">Find out more &raquo;</a>
+            <!-- Kartu Informasi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x250?text=Edukasi+SapeBre" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">Launching Eduwisata Mini Ranch SapeBre BBPTUHPT Baturaden</h6>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 23 July 2025</small>
+                </div>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="far fa-hospital"></i>
-              <span data-purecounter-start="0" data-purecounter-end="26" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Departments</strong> adipisci atque cum quia aut numquam delectus</p>
-              <a href="#">Find out more &raquo;</a>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x250?text=Kerja+Sama+SPPG" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">BBPTUHPT Baturaden Jalin Kerjasama Dengan Mitra SPPG Mensukseskan Program MBG</h6>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 16 July 2025</small>
+                </div>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="fas fa-flask"></i>
-              <span data-purecounter-start="0" data-purecounter-end="14" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Research Lab</strong> aut commodi quaerat. Aliquam ratione</p>
-              <a href="#">Find out more &raquo;</a>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x250?text=Menuju+BLU" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">BBPTUHPT Baturaden Siap Menuju BLU, Komitmen kami untuk melayani sepenuh hati</h6>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Selasa, 15 July 2025</small>
+                </div>
+                </div>
             </div>
-          </div>
 
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch">
-            <div class="count-box">
-              <i class="fas fa-award"></i>
-              <span data-purecounter-start="0" data-purecounter-end="150" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Awards</strong> rerum asperiores dolor molestiae doloribu</p>
-              <a href="#">Find out more &raquo;</a>
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x250?text=Rembug+Tani" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">Kepala BBPTUHPT Baturaden Dampingi Menteri Dalam Acara Rembug Tani Bersama Wapres</h6>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 09 July 2025</small>
+                </div>
+                </div>
             </div>
-          </div>
 
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x250?text=Kerjasama+Kejaksaan" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">BBPTUHPT dan Kejaksaan Negeri Tandatangani MoU Bidang Hukum dan TUN</h6>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 09 July 2025</small>
+                </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                <img src="https://via.placeholder.com/400x250?text=MBG" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h6 class="card-title">BBPTUHPT Kirimkan 5 Pengajar untuk Kegiatan Makan Bergizi Gratis (MBG)</h6>
+                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Senin, 30 June 2025</small>
+                </div>
+                </div>
+            </div>
+
+            </div>
         </div>
+        </div>
+    </div>
+    </section>
 
-      </div>
-    </section><!-- End Counts Section -->
+
+    </section><!-- End Informasi Section -->
 
     <!-- ======= Features Section ======= -->
     <section id="features" class="features">

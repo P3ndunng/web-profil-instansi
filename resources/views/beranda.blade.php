@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Medicio Bootstrap Template - Index</title>
+  <title>BBPTUHPT Baturaden</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -300,7 +300,7 @@
             <!-- Kartu Informasi -->
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                <img src="https://via.placeholder.com/400x250?text=Edukasi+SapeBre" class="card-img-top" alt="...">
+                <img src="themes/medicio/assets/img/info1.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">Launching Eduwisata Mini Ranch SapeBre BBPTUHPT Baturaden</h6>
                     <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 23 July 2025</small>
@@ -310,7 +310,7 @@
 
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                <img src="https://via.placeholder.com/400x250?text=Kerja+Sama+SPPG" class="card-img-top" alt="...">
+                <img src="themes/medicio/assets/img/info2.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">BBPTUHPT Baturaden Jalin Kerjasama Dengan Mitra SPPG Mensukseskan Program MBG</h6>
                     <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 16 July 2025</small>
@@ -320,7 +320,7 @@
 
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                <img src="https://via.placeholder.com/400x250?text=Menuju+BLU" class="card-img-top" alt="...">
+                <img src="themes/medicio/assets/img/info3.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">BBPTUHPT Baturaden Siap Menuju BLU, Komitmen kami untuk melayani sepenuh hati</h6>
                     <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Selasa, 15 July 2025</small>
@@ -330,7 +330,7 @@
 
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                <img src="https://via.placeholder.com/400x250?text=Rembug+Tani" class="card-img-top" alt="...">
+                <img src="themes/medicio/assets/img/info4.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">Kepala BBPTUHPT Baturaden Dampingi Menteri Dalam Acara Rembug Tani Bersama Wapres</h6>
                     <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 09 July 2025</small>
@@ -340,7 +340,7 @@
 
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                <img src="https://via.placeholder.com/400x250?text=Kerjasama+Kejaksaan" class="card-img-top" alt="...">
+                <img src="themes/medicio/assets/img/info5.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">BBPTUHPT dan Kejaksaan Negeri Tandatangani MoU Bidang Hukum dan TUN</h6>
                     <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 09 July 2025</small>
@@ -350,7 +350,7 @@
 
             <div class="col-md-6 col-lg-4">
                 <div class="card h-100 border-0 shadow-sm">
-                <img src="https://via.placeholder.com/400x250?text=MBG" class="card-img-top" alt="...">
+                <img src="themes/medicio/assets/img/info6.jpg" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h6 class="card-title">BBPTUHPT Kirimkan 5 Pengajar untuk Kegiatan Makan Bergizi Gratis (MBG)</h6>
                     <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Senin, 30 June 2025</small>
@@ -367,391 +367,87 @@
 
     </section><!-- End Informasi Section -->
 
-    <!-- ======= Features Section ======= -->
-    <section id="features" class="features">
-      <div class="container" data-aos="fade-up">
+   <!-- ======= Profil BBPTUHPT Section ======= -->
+    <section id="features" class="features py-5">
+    <div class="container text-center" data-aos="fade-up">
 
-        <div class="row">
-          <div class="col-lg-6 order-2 order-lg-1" data-aos="fade-right">
-            <div class="icon-box mt-5 mt-lg-0">
-              <i class="bx bx-receipt"></i>
-              <h4>Est labore ad</h4>
-              <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-cube-alt"></i>
-              <h4>Harum esse qui</h4>
-              <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-images"></i>
-              <h4>Aut occaecati</h4>
-              <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-            </div>
-            <div class="icon-box mt-5">
-              <i class="bx bx-shield"></i>
-              <h4>Beatae veritatis</h4>
-              <p>Expedita veritatis consequuntur nihil tempore laudantium vitae denat pacta</p>
-            </div>
-          </div>
-          <div class="image col-lg-6 order-1 order-lg-2" style='background-image: url("themes/medicio/assets/img/features.jpg");' data-aos="zoom-in"></div>
+        <!-- Judul -->
+        <h3 class="profil-title mb-4">PROFIL BBPTUHPT</h3>
+
+        <!-- Video -->
+        <div class="video-wrapper mb-3">
+        <div class="ratio ratio-16x9">
+            <iframe src="https://www.youtube.com/embed/DIGANTIKAN_ID_VIDEO"
+                    title="Profil BBPTUHPT BATURRADEN 2022"
+                    allowfullscreen>
+            </iframe>
+        </div>
         </div>
 
-      </div>
-    </section><!-- End Features Section -->
+        <!-- Subjudul -->
+        <p class="profil-subtitle mb-2">
+        Mengenal Lebih Dekat Balai Besar Pembibitan Ternak Unggul dan Hijauan Pakan Ternak Baturraden
+        </p>
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <!-- Deskripsi -->
+        <div class="profil-desc mt-2">
+        <p>
+            Balai Besar Pembibitan Ternak Unggul dan Hijauan Pakan Ternak (BBPTUHPT) Baturraden sebagai salah satu dari Unit Pelaksana Teknis lingkup direktorat jenderal peternakan dan kesehatan hewan Kementerian Pertanian terus bekerja keras untuk memenuhi ketersediaan bibit unggul sapi perah dan kambing perah di Indonesia. Sebagai institusi yang profesional dalam menghasilkan bibit sapi perah, kambing perah dan hijauan pakan ternak kami didukung oleh SDM profesional dan disiplin tinggi yang berkomitmen memberikan pelayanan yang terbaik untuk masyarakat dalam mengembangkan bibit-bibit unggul yang berkualitas, berdaya saing dan berkelanjutan sesuai standar mutu.
+        </p>
         </div>
 
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon"><i class="fas fa-heartbeat"></i></div>
-            <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-            <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon"><i class="fas fa-pills"></i></div>
-            <h4 class="title"><a href="">Dolor Sitema</a></h4>
-            <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon"><i class="fas fa-hospital-user"></i></div>
-            <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-            <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="100">
-            <div class="icon"><i class="fas fa-dna"></i></div>
-            <h4 class="title"><a href="">Magni Dolores</a></h4>
-            <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="200">
-            <div class="icon"><i class="fas fa-wheelchair"></i></div>
-            <h4 class="title"><a href="">Nemo Enim</a></h4>
-            <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="zoom-in" data-aos-delay="300">
-            <div class="icon"><i class="fas fa-notes-medical"></i></div>
-            <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-            <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-          </div>
+    </div>
+    </section>
+
+    <!-- End Features Section -->
+
+    <!-- ======= Media Sosial Section ======= -->
+    <section id="media-sosial" class="media-sosial section-bg">
+    <div class="container" data-aos="fade-up">
+
+        <div class="section-title text-center">
+        <h2 class="fw-bold text-dark">MEDIA SOSIAL</h2>
+        <p>Klik info lebih detil :</p>
+        <hr style="width: 40px; margin: 10px auto; border-top: 2px solid #000;">
         </div>
 
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Appointment Section ======= -->
-    <section id="appointment" class="appointment section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Make an Appointment</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="social-card instagram">
+            <img src="themes/medicio/assets/img/Instagram.jpg" alt="Instagram">
+            <h5>INSTAGRAM</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="social-card facebook">
+            <img src="themes/medicio/assets/img/Facebook.jpg" alt="Facebook">
+            <h5>FACEBOOK</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="social-card youtube">
+            <img src="themes/medicio/assets/img/youtube.png" alt="YouTube">
+            <h5>YOUTUBE</h5>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="social-card tiktok">
+            <img src="themes/medicio/assets/img/tiktok.png" alt="TikTok">
+            <h5>TIKTOK</h5>
+            </div>
+        </div>
         </div>
 
-        <form action="forms/appointment.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
-          <div class="row">
-            <div class="col-md-4 form-group">
-              <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
-            </div>
-            <div class="col-md-4 form-group mt-3 mt-md-0">
-              <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Phone" required>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-4 form-group mt-3">
-              <input type="datetime" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" required>
-            </div>
-            <div class="col-md-4 form-group mt-3">
-              <select name="department" id="department" class="form-select">
-                <option value="">Select Department</option>
-                <option value="Department 1">Department 1</option>
-                <option value="Department 2">Department 2</option>
-                <option value="Department 3">Department 3</option>
-              </select>
-            </div>
-            <div class="col-md-4 form-group mt-3">
-              <select name="doctor" id="doctor" class="form-select">
-                <option value="">Select Doctor</option>
-                <option value="Doctor 1">Doctor 1</option>
-                <option value="Doctor 2">Doctor 2</option>
-                <option value="Doctor 3">Doctor 3</option>
-              </select>
-            </div>
-          </div>
+    </div>
+    </section><!-- End Media Sosial -->
 
-          <div class="form-group mt-3">
-            <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-          </div>
-          <div class="my-3">
-            <div class="loading">Loading</div>
-            <div class="error-message"></div>
-            <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
-          </div>
-          <div class="text-center"><button type="submit">Make an Appointment</button></div>
-        </form>
-
-      </div>
-    </section><!-- End Appointment Section -->
-
-    <!-- ======= Departments Section ======= -->
-    <section id="departments" class="departments">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Departments</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-4 mb-5 mb-lg-0">
-            <ul class="nav nav-tabs flex-column">
-              <li class="nav-item">
-                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#tab-1">
-                  <h4>Cardiology</h4>
-                  <p>Quis excepturi porro totam sint earum quo nulla perspiciatis eius.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2">
-                  <h4>Neurology</h4>
-                  <p>Voluptas vel esse repudiandae quo excepturi.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-3">
-                  <h4>Hepatology</h4>
-                  <p>Velit veniam ipsa sit nihil blanditiis mollitia natus.</p>
-                </a>
-              </li>
-              <li class="nav-item mt-2">
-                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-4">
-                  <h4>Pediatrics</h4>
-                  <p>Ratione hic sapiente nostrum doloremque illum nulla praesentium id</p>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-lg-8">
-            <div class="tab-content">
-              <div class="tab-pane active show" id="tab-1">
-                <h3>Cardiology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="themes/medicio/assets/img/departments-1.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-2">
-                <h3>Neurology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="themes/medicio/assets/img/departments-2.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-3">
-                <h3>Hepatology</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="themes/medicio/assets/img/departments-3.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-              <div class="tab-pane" id="tab-4">
-                <h3>Pediatrics</h3>
-                <p class="fst-italic">Qui laudantium consequatur laborum sit qui ad sapiente dila parde sonata raqer a videna mareta paulona marka</p>
-                <img src="themes/medicio/assets/img/departments-4.jpg" alt="" class="img-fluid">
-                <p>Et nobis maiores eius. Voluptatibus ut enim blanditiis atque harum sint. Laborum eos ipsum ipsa odit magni. Incidunt hic ut molestiae aut qui. Est repellat minima eveniet eius et quis magni nihil. Consequatur dolorem quaerat quos qui similique accusamus nostrum rem vero</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Departments Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="themes/medicio/assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="themes/medicio/assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="themes/medicio/assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="themes/medicio/assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="themes/medicio/assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    <!-- ======= Doctors Section ======= -->
-    <section id="doctors" class="doctors section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Doctors</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="100">
-              <div class="member-img">
-                <img src="themes/medicio/assets/img/doctors/doctors-1.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Walter White</h4>
-                <span>Chief Medical Officer</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="200">
-              <div class="member-img">
-                <img src="themes/medicio/assets/img/doctors/doctors-2.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Sarah Jhonson</h4>
-                <span>Anesthesiologist</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="300">
-              <div class="member-img">
-                <img src="themes/medicio/assets/img/doctors/doctors-3.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>William Anderson</h4>
-                <span>Cardiology</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
-            <div class="member" data-aos="fade-up" data-aos-delay="400">
-              <div class="member-img">
-                <img src="themes/medicio/assets/img/doctors/doctors-4.jpg" class="img-fluid" alt="">
-                <div class="social">
-                  <a href=""><i class="bi bi-twitter"></i></a>
-                  <a href=""><i class="bi bi-facebook"></i></a>
-                  <a href=""><i class="bi bi-instagram"></i></a>
-                  <a href=""><i class="bi bi-linkedin"></i></a>
-                </div>
-              </div>
-              <div class="member-info">
-                <h4>Amanda Jepson</h4>
-                <span>Neurosurgeon</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Doctors Section -->
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>Gallery</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+          <h2>Gallery</h2
         </div>
 
         <div class="gallery-slider swiper">
@@ -764,12 +460,69 @@
             <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-6.jpg"><img src="themes/medicio/assets/img/gallery/gallery-6.jpg" class="img-fluid" alt=""></a></div>
             <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-7.jpg"><img src="themes/medicio/assets/img/gallery/gallery-7.jpg" class="img-fluid" alt=""></a></div>
             <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-8.jpg"><img src="themes/medicio/assets/img/gallery/gallery-8.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-9.jpg"><img src="themes/medicio/assets/img/gallery/gallery-9.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-10.jpg"><img src="themes/medicio/assets/img/gallery/gallery-10.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-11.jpg"><img src="themes/medicio/assets/img/gallery/gallery-11.jpg" class="img-fluid" alt=""></a></div>
+            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-12.jpg"><img src="themes/medicio/assets/img/gallery/gallery-12.jpg" class="img-fluid" alt=""></a></div>
           </div>
           <div class="swiper-pagination"></div>
         </div>
 
       </div>
     </section><!-- End Gallery Section -->
+
+    <!-- ======= Link Terkait Section ======= -->
+        <section id="link-terkait" class="link-terkait">
+        <div class="container text-center" data-aos="fade-up">
+            <div class="section-title">
+            <h2>LINK TERKAIT</h2>
+            </div>
+
+            <div class="swiper link-swiper">
+            <div class="swiper-wrapper align-items-center">
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link1.jpg" class="img-fluid" alt="Link 1">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link2.jpg" class="img-fluid" alt="Link 2">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link3.jpg" class="img-fluid" alt="Link 3">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link4.jpg" class="img-fluid" alt="Link 4">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link5.jpg" class="img-fluid" alt="Link 5">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link6.jpg" class="img-fluid" alt="Link 6">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link7.jpg" class="img-fluid" alt="Link 7">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link8.jpg" class="img-fluid" alt="Link 8">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link9.jpg" class="img-fluid" alt="Link 9">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link10.jpg" class="img-fluid" alt="Link 10">
+                </div>
+                <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link11.jpg" class="img-fluid" alt="Link 11">
+                </div>
+                  <div class="swiper-slide">
+                <img src="themes/medicio/assets/img/link_terkait/link12.jpg" class="img-fluid" alt="Link 12">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        </section><!-- End link Section -->
+
+
 
     <!-- ======= Pricing Section ======= -->
     <section id="pricing" class="pricing">

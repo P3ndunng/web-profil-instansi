@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\ProfilController;
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -16,6 +17,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/',function () {
     return view('beranda');
 });
+Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard',function () {

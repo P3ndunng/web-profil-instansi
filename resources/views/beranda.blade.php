@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BBPTUHPT Baturaden</title>
+  <title>BBPTUHPT Baturraden</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -100,33 +100,99 @@
     </div>
 
     <!-- Navbar -->
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto active" href="#beranda">BERANDA</a></li>
+        <nav id="navbar" class="navbar">
+        <ul>
+            <li><a class="nav-link scrollto active" href="#beranda">BERANDA</a></li>
 
-        <!-- Dropdown Profil -->
-        <li class="dropdown">
-          <a href="#"><span>PROFIL</span> <i class="bi bi-chevron-down"></i></a>
-          <ul class="dropdown-menu">
-            <li><a href="#tentang">TENTANG BBPTUHPT</a></li>
-            <li><a href="#struktur">STRUKTUR ORGANISASI</a></li>
-            <li><a href="#sejarah">SEJARAH</a></li>
-            <li><a href="#visi">VISI & MISI</a></li>
-            <li><a href="#moto">MOTO DAN JANJI LAYANAN</a></li>
-            <li><a href="#tugas">TUGAS POKOK DAN FUNGSI</a></li>
-            <li><a href="#prestasi">PRESTASI</a></li>
-            <li><a href="#maklumat">MAKLUMAT PELAYANAN</a></li>
-            <li><a href="#sdm">SDM</a></li>
-            <li><a href="#kebijakan">KEBIJAKAN MUTU</a></li>
-            <li><a href="#gallery">GALLERY</a></li>
-          </ul>
-        </li>
+            <!-- Dropdown PROFIL -->
+            <li class="dropdown">
+            <a href="#"><span>PROFIL</span> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="{{ route('profil') }}">TENTANG BBPTUHPT</a></li>
+                <li><a href="#struktur">STRUKTUR ORGANISASI</a></li>
+                <li><a href="#sejarah">SEJARAH</a></li>
+                <li><a href="#visi">VISI & MISI</a></li>
+                <li><a href="#moto">MOTO DAN JANJI LAYANAN</a></li>
+                <li><a href="#tugas">TUGAS POKOK DAN FUNGSI</a></li>
+                <li><a href="#prestasi">PRESTASI</a></li>
+                <li><a href="#maklumat">MAKLUMAT PELAYANAN</a></li>
+                <li><a href="#sdm">SDM</a></li>
+                <li><a href="#kebijakan">KEBIJAKAN MUTU</a></li>
+                <li><a href="#gallery">GALLERY</a></li>
+            </ul>
+            </li>
 
-        <li><a class="nav-link scrollto" href="#layanan">LAYANAN</a></li>
-        <li><a class="nav-link scrollto" href="#informasi">INFORMASI PUBLIK</a></li>
-        <li><a class="nav-link scrollto" href="#inovasi">INOVASI</a></li>
-        <li><a class="nav-link scrollto" href="#unduh">UNDUH</a></li>
-        <li><a class="nav-link scrollto" href="#kontak">KONTAK KAMI</a></li>
+            <!-- Dropdown LAYANAN -->
+            <li class="dropdown">
+            <a href="#"><span>LAYANAN</span> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#produk">PRODUK KAMI</a></li>
+                <li><a href="#alur">ALUR PEMBELIAN</a></li>
+                <li class="dropdown">
+                <a href="#"><span>PERMOHONAN LAYANAN ONLINE</span> <i class="bi bi-chevron-right"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#sub1">PEMBELIAN BIBIT ONLINE</a></li>
+                    <li><a href="#sub2">BIAYA DAN TARIF </a></li>
+                    <li><a href="#sub3">KUNJUNGAN PENELITIAN DAN MAGANG </a></li>
+                </ul>
+                </li>
+                <li><a href="#kunjungan">KUNJUNGAN, PENELITIAN & PEMAGANGAN</a></li>
+                <li><a href="#bimbingan">BIMBINGAN TEKNIS</a></li>
+                <li><a href="#sewa">LAYANAN SEWA ASET BALAI</a></li>
+                <li><a href="#lab">LABORATORIUM</a></li>
+                <li><a href="#harga">HARGA TERNAK DAN HPT</a></li>
+                <li><a href="#survei">SURVEY KEPUASAN MASYARAKAT</a></li>
+            </ul>
+            </li>
+
+            <!-- Dropdown INFORMASI PUBLIK -->
+            <li class="dropdown">
+            <a href="#"><span>INFORMASI PUBLIK</span> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#berita">BERITA TERKINI</a></li>
+                <li><a href="#artikel">ARTIKEL</a></li>
+                <li><a href="#zona-integritas">PEMBANGUNAN ZONA INTEGRITAS</a></li>
+                <li><a href="#protokol-covid">PROTOKOL KESEHATAN COVID19</a></li>
+                <li class="dropdown">
+                <a href="#"><span>PORTAL PPID</span> <i class="bi bi-chevron-right"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a href="https://ppid.pertanian.go.id" target="_blank">PPID</a></li>
+                    <li><a href="#informasi-setiap-saat">INFORMASI PUBLIK SETIAP SAAT</a></li>
+                    <li><a href="#informasi-berkala">INFORMASI PUBLIK BERKALA</a></li>
+                    <li><a href="#informasi-serta-merta">INFORMASI PUBLIK SERTA MERTA</a></li>
+                    <li><a href="#tata-cara">TATA CARA PERMOHONAN INFORMASI PUBLIK</a></li>
+                    <li><a href="#hak-informasi">HAK ATAS INFORMASI PUBLIK</a></li>
+                    <li><a href="#mekanisme-keberatan">MEKANISME PENGAJUAN KEBERATAN</a></li>
+                    <li><a href="#sengketa-informasi">PENANGANAN SENGKETA INFORMASI</a></li>
+                </ul>
+                </li>
+                <li><a href="#laporan-ikm">LAPORAN IKM</a></li>
+                <li><a href="#bibit-sapi-kambing">DISTRIBUSI BIBIT SAPI PERAH & KAMBING</a></li>
+                <li><a href="#bibit-hpt">DISTRIBUSI BIBIT HPT</a></li>
+                <li><a href="#pengaduan">PENGADUAN MASYARAKAT</a></li>
+                <li><a href="#regulasi">REGULASI DAN PERATURAN</a></li>
+                <li><a href="#rancangan-kebijakan">DAFTAR RANCANGAN KEBIJAKAN</a></li>
+                <li><a href="#grafik">GRAFIK PERKEMBANGAN</a></li>
+            </ul>
+            </li>
+
+            <!-- Dropdown INOVASI -->
+            <li class="dropdown">
+            <a href="#"><span>INOVASI</span> <i class="bi bi-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+                <li><a href="#halo drh">HALO DRH</a></li>
+                <li><a href="#braden">BRADEN</a></li>
+                <li><a href="#Arevy">AREVY SYSTEM</a></li>
+                <li><a href="#ruminansia">RUMINANSIA OLINE</a></li>
+                <li><a href="#breding">BREEDING ONLINE</a></li>
+                <li><a href="#e-personal">E-PERSONAL</a></li>
+                <li><a href="#e-dupak">E-DUPAK</a></li>
+                <li><a href="#buku">BUKU PINTAR INOVASI</a></li>
+            </ul>
+            <li><a class="nav-link scrollto" href="#unduh">UNDUH</a></li>
+            <li><a class="nav-link scrollto" href="#kontak">KONTAK KAMI</a></li>
+        </ul>
+        </nav>
 
         <!-- Search Icon -->
         <li class="d-flex align-items-center">
@@ -164,54 +230,67 @@
   <main id="main">
 
    <!-- ======= Featured Services Section ======= -->
-<section id="featured-services" class="featured-services py-5">
-  <div class="container" data-aos="fade-up">
+    <section id="featured-services" class="featured-services py-5">
+    <div class="container" data-aos="fade-up">
 
-    <!-- Judul -->
-    <div class="text-center mb-5">
-      <h3 class="fw-bold" style="color: #024422;">SELAMAT DATANG DI<br>BBPTUHPT Baturaden</h3>
-      <h4 class="fw-bold mt-3" style="color: #024422;">INFORMASI UNTUK ANDA</h4>
-      <p>Klik info lebih detil :</p>
-      <hr style="width: 60px; height: 2px; background: #000; margin: 10px auto;">
+        <!-- Judul -->
+        <div class="text-center mb-5">
+        <h3 class="fw-bold" style="color: #024422;">SELAMAT DATANG DI<br>BBPTUHPT Baturaden</h3>
+        <h4 class="fw-bold mt-3" style="color: #024422;">INFORMASI UNTUK ANDA</h4>
+        <p>Klik info lebih detil :</p>
+        <hr style="width: 60px; height: 2px; background: #000; margin: 10px auto;">
+        </div>
+
+        <!-- Kartu Informasi -->
+        <div class="row justify-content-center gx-2 gy-3">
+        <!-- Kartu 1 -->
+        <div class="col-auto">
+            <div class="icon-box card-orange">
+            <div class="top-line"></div>
+            <div class="card-content">
+                <img src="themes/medicio/assets/img/produk.jpg" alt="Produk">
+            </div>
+            <h5>PRODUK DAN LAYANAN</h5>
+            </div>
+        </div>
+
+        <!-- Kartu 2 -->
+        <div class="col-auto">
+            <div class="icon-box card-blue">
+            <div class="top-line"></div>
+            <div class="card-content">
+                <img src="themes/medicio/assets/img/info.jpg" alt="Informasi">
+            </div>
+            <h5>PERMOHONAN INFORMASI</h5>
+            </div>
+        </div>
+
+        <!-- Kartu 3 -->
+        <div class="col-auto">
+            <div class="icon-box card-teal">
+            <div class="top-line"></div>
+            <div class="card-content">
+                <img src="themes/medicio/assets/img/harga.jpg" alt="Harga">
+            </div>
+            <h5>HARGA KOMODITAS TERNAK</h5>
+            </div>
+        </div>
+
+        <!-- Kartu 4 -->
+        <div class="col-auto">
+            <div class="icon-box card-maroon">
+            <div class="top-line"></div>
+            <div class="card-content">
+                <img src="themes/medicio/assets/img/kegiatan.jpg" alt="Kegiatan">
+            </div>
+            <h5>KEGIATAN BBPTUHPT</h5>
+            </div>
+        </div>
+        </div>
     </div>
+    </section>
+    <!-- End Featured Service Section -->
 
-    <!-- Kartu Informasi -->
-    <div class="row justify-content-center">
-      <!-- Kartu 1 -->
-      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
-        <div class="icon-box card-orange w-100 text-center p-4 rounded-4">
-          <img src="themes/medicio/assets/img/produk.jpg" class="rounded-circle mb-3 card-img" alt="Produk">
-          <h5 class="text-white fw-bold text-uppercase">PRODUK DAN LAYANAN</h5>
-        </div>
-      </div>
-
-      <!-- Kartu 2 -->
-      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
-        <div class="icon-box card-blue w-100 text-center p-4 rounded-4">
-          <img src="themes/medicio/assets/img/info.jpg" class="rounded-circle mb-3 card-img" alt="Informasi">
-          <h5 class="text-white fw-bold text-uppercase">PERMOHONAN INFORMASI</h5>
-        </div>
-      </div>
-
-      <!-- Kartu 3 -->
-      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
-        <div class="icon-box card-teal w-100 text-center p-4 rounded-4">
-          <img src="themes/medicio/assets/img/harga.jpg" class="rounded-circle mb-3 card-img" alt="Harga">
-          <h5 class="text-white fw-bold text-uppercase">HARGA KOMODITAS TERNAK</h5>
-        </div>
-      </div>
-
-      <!-- Kartu 4 -->
-      <div class="col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
-        <div class="icon-box card-maroon w-100 text-center p-4 rounded-4">
-          <img src="themes/medicio/assets/img/kegiatan.jpg" class="rounded-circle mb-3 card-img" alt="Kegiatan">
-          <h5 class="text-white fw-bold text-uppercase">KEGIATAN BBPTUHPT</h5>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 
     <!-- ======= Layanan Kami Section ======= -->
@@ -524,314 +603,130 @@
 
 
 
-    <!-- ======= Pricing Section ======= -->
-    <section id="pricing" class="pricing">
-      <div class="container" data-aos="fade-up">
-
+    <!-- ======= Direktori Section ======= -->
+    <section id="direktori" class="direktori">
+    <div class="container text-center" data-aos="fade-up">
         <div class="section-title">
-          <h2>Pricing</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <h2>DIREKTORI</h2>
+        <p>Klik info lebih detil :</p>
         </div>
 
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="box" data-aos="fade-up" data-aos-delay="100">
-              <h3>Free</h3>
-              <h4><sup>$</sup>0<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li class="na">Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-            <div class="box featured" data-aos="fade-up" data-aos-delay="200">
-              <h3>Business</h3>
-              <h4><sup>$</sup>19<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li class="na">Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="fade-up" data-aos-delay="300">
-              <h3>Developer</h3>
-              <h4><sup>$</sup>29<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-            <div class="box" data-aos="fade-up" data-aos-delay="400">
-              <span class="advanced">Advanced</span>
-              <h3>Ultimate</h3>
-              <h4><sup>$</sup>49<span> / month</span></h4>
-              <ul>
-                <li>Aida dere</li>
-                <li>Nec feugiat nisl</li>
-                <li>Nulla at volutpat dola</li>
-                <li>Pharetra massa</li>
-                <li>Massa ultricies mi</li>
-              </ul>
-              <div class="btn-wrap">
-                <a href="#" class="btn-buy">Buy Now</a>
-              </div>
-            </div>
-          </div>
-
+        <div class="row justify-content-center">
+        <!-- Kartu Internal -->
+        <div class="col-auto mb-4">
+            <a href="#" class="direktori-card internal">
+            <div class="direktori-slot"></div>
+            <div class="direktori-icon"></div>
+            <h3>INTERNAL</h3>
+            </a>
         </div>
 
-      </div>
-    </section><!-- End Pricing Section -->
-
-    <!-- ======= Frequently Asked Questioins Section ======= -->
-    <section id="faq" class="faq section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Frequently Asked Questioins</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <!-- Kartu Eksternal -->
+        <div class="col-auto mb-4">
+            <a href="#" class="direktori-card eksternal">
+            <div class="direktori-slot"></div>
+            <div class="direktori-icon"></div>
+            <h3>EKSTERNAL</h3>
+            </a>
+        </div>
         </div>
 
-        <ul class="faq-list">
-
-          <li>
-            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">Non consectetur a erat nam at lectus urna duis? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Feugiat pretium nibh ipsum consequat. Tempus iaculis urna id volutpat lacus laoreet non curabitur gravida. Venenatis lectus magna fringilla urna porttitor rhoncus dolor purus non.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Feugiat scelerisque varius morbi enim nunc faucibus a pellentesque? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis orci. Faucibus pulvinar elementum integer enim. Sem nulla pharetra diam sit amet nisl suscipit. Rutrum tellus pellentesque eu tincidunt. Lectus urna duis convallis convallis tellus. Urna molestie at elementum eu facilisis sed odio morbi quis
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Ac odio tempor orci dapibus. Aliquam eleifend mi in nulla? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Dolor sit amet consectetur adipiscing elit pellentesque habitant morbi. Id interdum velit laoreet id donec ultrices. Fringilla phasellus faucibus scelerisque eleifend donec pretium. Est pellentesque elit ullamcorper dignissim. Mauris ultrices eros in cursus turpis massa tincidunt dui.
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Tempus quam pellentesque nec nam aliquam sem et tortor consequat? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Molestie a iaculis at erat pellentesque adipiscing commodo. Dignissim suspendisse in est ante in. Nunc vel risus commodo viverra maecenas accumsan. Sit amet nisl suscipit adipiscing bibendum est. Purus gravida quis blandit turpis cursus in
-              </p>
-            </div>
-          </li>
-
-          <li>
-            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question">Tortor vitae purus faucibus ornare. Varius vel pharetra vel turpis nunc eget lorem dolor? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
-            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
-              <p>
-                Laoreet sit amet cursus sit amet dictum sit amet justo. Mauris vitae ultricies leo integer malesuada nunc vel. Tincidunt eget nullam non nisi est sit amet. Turpis nunc eget lorem dolor sed. Ut venenatis tellus in metus vulputate eu scelerisque. Pellentesque diam volutpat commodo sed egestas egestas fringilla phasellus faucibus. Nibh tellus molestie nunc non blandit massa enim nec.
-              </p>
-            </div>
-          </li>
-
-        </ul>
-
-      </div>
-    </section><!-- End Frequently Asked Questioins Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <!-- Garis dan Bintang -->
+        <div class="separator">
+        <hr>
+        <span class="star">★</span>
         </div>
-
-      </div>
-
-      <div>
-        <iframe style="border:0; width: 100%; height: 350px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" allowfullscreen></iframe>
-      </div>
-
-      <div class="container">
-
-        <div class="row mt-5">
-
-          <div class="col-lg-6">
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="info-box">
-                  <i class="bx bx-map"></i>
-                  <h3>Our Address</h3>
-                  <p>A108 Adam Street, New York, NY 535022</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box mt-4">
-                  <i class="bx bx-envelope"></i>
-                  <h3>Email Us</h3>
-                  <p>info@example.com<br>contact@example.com</p>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="info-box mt-4">
-                  <i class="bx bx-phone-call"></i>
-                  <h3>Call Us</h3>
-                  <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="col-md-6 form-group">
-                  <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
-                </div>
-                <div class="col-md-6 form-group mt-3 mt-md-0">
-                  <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
-                </div>
-              </div>
-              <div class="form-group mt-3">
-                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
-              </div>
-              <div class="form-group mt-3">
-                <textarea class="form-control" name="message" rows="7" placeholder="Message" required=""></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
+    </div>
+    </section>
+    <!-- End Direktori Section -->
 
   </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
     <div class="footer-top">
-      <div class="container">
+        <div class="container">
         <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h3>Medicio</h3>
-              <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
-              </p>
-              <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-              </div>
+            <!-- Kolom 1: Kantor BBPTUHPT -->
+            <div class="col-lg-4 col-md-6 footer-info">
+            <h3>Kantor BBPTUHPT</h3>
+            <p>
+                <a href="https://maps.google.com" target="_blank" class="alamat-link">
+                Jl. Raya Baturraden, Ds Kemutug Lor Kec. Baturraden, Kab. Banyumas Jawa Tengah 53151
+                </a><br><br>
+                <strong>Telepon:</strong> (0281) 681716<br>
+                <strong>Surel:</strong> bbptuhpt_btraden@pertanian.go.id<br>
+                bbptuhptbaturraden@gmail.com<br><br>
+                <strong>Website:</strong><br>
+                <a href="https://bbptusapiperah.ditjenpkh.pertanian.go.id" target="_blank" class="alamat-link">
+                https://bbptusapiperah.ditjenpkh.pertanian.go.id
+                </a>
+            </p>
+            <div class="social-links mt-3">
+                <a href="#"><i class="bi bi-whatsapp"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-youtube"></i></a>
             </div>
-          </div>
+            </div>
 
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
+            <!-- Kolom 2: Kontak Penting -->
+            <div class="col-lg-4 col-md-6 kontak-penting">
+            <h3>Kontak Penting</h3>
 
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
+            <div class="wa-box">
+                <i class="bi bi-whatsapp"></i>
+                <span>Layanan Informasi Publik, Kunjungan, Magang, PKL & Pengaduan<br>
+                <strong>089504411118</strong> (Tri Juliyanta, SH, MH)
+                </span>
+            </div>
 
-          <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
+            <div class="wa-box">
+                <i class="bi bi-whatsapp"></i>
+                <span>Layanan Pemasaran dan Informasi Bibit<br>
+                <strong>089505111118</strong> (Hery Supriadi, S.Pt., M.Pt)
+                </span>
+            </div>
 
-          </div>
+            <p class="posko-title">Posko Nasional Tanggap Darurat</p>
+            <p class="posko-desc">Penanganan, Pelaporan, dan Koordinasi PMK Nasional<br>
+                0812-8634-5622, 0812-8634-5633
+            </p>
+            </div>
+
+            <!-- Kolom 3: Lain-lain -->
+            <div class="col-lg-4 col-md-12 lain-lain">
+            <h3>Lain-lain</h3>
+
+            <div class="jam-pelayanan">
+                <p><i class="bi bi-clock"></i> Jam Pelayanan</p>
+                <span>Senin s.d Kamis &nbsp; 08.00 s.d 15.00 WIB</span><br>
+                <span>Jum’at &nbsp; 08.00 s.d 15.30 WIB</span>
+            </div>
+
+            <div class="sertifikasi">
+                <img src="themes/medicio/assets/img/SNI-9001.jpg" alt="SNI ISO 9001">
+                <img src="themes/medicio/assets/img/SNI-37001.jpg" alt="SNI ISO 37001">
+            </div>
+
+            <div class="statistik">
+                <p>Statistik Pengunjung:</p>
+                <img src="themes/medicio/assets/img/statistik.png" alt="Statistik">
+            </div>
+            </div>
 
         </div>
-      </div>
+        </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Medicio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medicio-free-bootstrap-theme/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+    <div class="footer-bottom">
+        <div class="container">
+        <div class="copyright">
+            &copy; <strong><span>BBPTUHPT Baturraden</span></strong>. All Rights Reserved
+        </div>
+        </div>
     </div>
-  </footer><!-- End Footer -->
-
+    </footer>
+    <!-- End Footer -->
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

@@ -324,3 +324,22 @@ new Swiper('.link-swiper', {
     },
     loop: true
   });
+
+  //pagination link terkait
+document.addEventListener('DOMContentLoaded', function () {
+  var linkSwiper = new Swiper('.link-swiper', {
+    slidesPerView: 5, // jumlah gambar terlihat di desktop
+    spaceBetween: 20, // jarak antar gambar
+    centeredSlides: true, // selalu posisikan slide aktif di tengah
+    loop: true, // agar berputar terus
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    breakpoints: {
+      0: { slidesPerView: 2 },
+      768: { slidesPerView: 3 },
+      992: { slidesPerView: 5 }
+    }
+  });
+});

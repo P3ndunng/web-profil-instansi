@@ -4,7 +4,7 @@
 <div class="container">
     <h4>Tambah Galeri</h4>
 
-    <form action="{{ route('galeri.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.galeri.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">

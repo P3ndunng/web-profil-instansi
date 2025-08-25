@@ -4,7 +4,7 @@
 <div class="container">
     <h4>Edit Galeri</h4>
 
-    <form action="{{ route('galeri.update', $galeri->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.galeri.update', $galeri->id) }}" method="POST" enctype="multipart/form-data">
         @csrf @method('PUT')
 
         <div class="mb-3">

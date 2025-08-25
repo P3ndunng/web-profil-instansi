@@ -309,75 +309,78 @@
 
             <!-- ========== Left Sidebar Start ========== -->
             <div class="vertical-menu">
+            <div data-simplebar class="h-100">
+                <div id="sidebar-menu">
+                    <ul class="metismenu list-unstyled" id="side-menu">
+                        <li class="menu-title" data-key="t-menu">Menu</li>
 
-                <div data-simplebar class="h-100">
+                        <li>
+                            <a href="{{ route('admin.dashboard') }}">
+                                <i data-feather="home"></i>
+                                <span data-key="t-dashboard">Dashboard</span>
+                            </a>
+                        </li>
 
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-                        <!-- Left Menu Start -->
-                        <ul class="metismenu list-unstyled" id="side-menu">
-                            <li class="menu-title" data-key="t-menu">Menu</li>
+                        <li>
+                            <a href="{{ route('admin.users.index') }}">
+                                <i data-feather="users"></i>
+                                <span data-key="t-authentication">Manajemen Pengguna</span>
+                            </a>
+                        </li>
 
-                            <li>
-                                    <a href="{{ route('dashboard') }}">
-                                    <i data-feather="home"></i>
-                                    <span data-key="t-dashboard">Dashboard</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{route(name:"users.index")  }}">
-                                    <i data-feather="users"></i>
-                                    <span data-key="t-authentication">Manajemen Pengguna</span>
-                                </a>
-                            </li>
+                        <!-- ===== MANAGEMEN INFORMASI ===== -->
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow">
+                                <i data-feather="file-text"></i>
+                                <span data-key="t-pages">Manajemen Informasi</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{ route('admin.berita.index') }}">Berita</a></li>
+                                <li><a href="{{ route('admin.pengumuman.index') }}">Pengumuman</a></li>
+                                <li><a href="{{ route('admin.artikel.index') }}">Artikel</a></li>
+                                <li><a href="{{ route('admin.agenda.index') }}">Agenda</a></li>
+                            </ul>
+                        </li>
 
-                            <li>
-                                <a href="{{route(name:"infos.index")  }}">
-                                    <i data-feather="file-text"></i>
-                                    <span data-key="t-pages">Manajemen informasi</span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="{{ route('admin.kategoris.index') }}">
+                                <i data-feather="layers"></i>
+                                <span data-key="t-components">Manajemen Kategori</span>
+                            </a>
+                        </li>
 
-                            <li>
-                                 <a href="{{ route('kategoris.index') }}">
-                                    <i data-feather="layers"></i>
-                                    <span data-key="t-components">Manajemen Kategori</span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="{{ route('admin.menu.index') }}">
+                                <i data-feather="grid"></i>
+                                <span data-key="t-ui-elements">Manajemen Menu</span>
+                            </a>
+                        </li>
 
-                            <li>
-                                <a href="{{ route('menu.index') }}">
-                                    <i data-feather="grid"></i>
-                                    <span data-key="t-ui-elements">Manajemen Menu</span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="{{ route('admin.galeri.index') }}">
+                                <i data-feather="image"></i>
+                                <span data-key="t-forms">Manajemen Galeri</span>
+                            </a>
+                        </li>
 
-                            <li>
-                                <a href="{{ route('galeri.index') }}">
-                                    <i data-feather="image"></i>
-                                    <span data-key="t-forms">Manajemen Galeri</span>
-                                </a>
-                            </li>
+                        <li>
+                            <a href="{{ route('admin.kontak.index') }}">
+                                <i data-feather="phone"></i>
+                                <span data-key="t-tables">Manajemen Kontak</span>
+                            </a>
+                        </li>
 
-                            <li>
-                                   <a href="{{ route('kontak.index') }}">
-                                    <i data-feather="phone"></i>
-                                    <span data-key="t-tables">Manajemen kontak</span>
-                                </a>
-                            </li>
-
-                            <li>
-                                <a href="{{ route('media.index') }}">
-                                    <i data-feather="download"></i>
-                                    <span data-key="t-charts">Manajemen File</span>
-                                </a>
-                            </li>
-
-                        </ul>
-                    </div>
-                    <!-- Sidebar -->
+                        <li>
+                            <a href="{{ route('admin.media.index') }}">
+                                <i data-feather="download"></i>
+                                <span data-key="t-charts">Manajemen File</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
+         </div>
+
             <!-- Left Sidebar End -->
 
 

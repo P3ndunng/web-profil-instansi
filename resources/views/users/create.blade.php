@@ -51,7 +51,7 @@
         </div>
 
         <div class="d-flex gap-2">
-            <a href="{{ route('users.index') }}" class="btn btn-secondary">
+            <a href="{{ route('admin.users.index') }}" class="btn btn-secondary">
                 <i data-feather="arrow-left" class="icon-xs"></i> Batal
             </a>
             <button type="submit" class="btn btn-primary">

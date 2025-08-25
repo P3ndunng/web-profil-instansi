@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <form action="{{ route('kategoris.store') }}" method="POST">
+    <form action="{{ route('admin.kategoris.store') }}" method="POST">
         @csrf
 
         <div class="mb-3">
@@ -30,8 +30,23 @@
             <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
         </div>
 
-        <a href="{{ route('kategoris.index') }}" class="btn btn-secondary">Batal</a>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <div class="d-flex gap-2">
+            <a href="{{ route('admin.kategoris.index') }}" class="btn btn-secondary">
+                <i data-feather="arrow-left" class="icon-xs"></i> Batal
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i data-feather="save" class="icon-xs"></i> Simpan
+            </button>
+        </div>
     </form>
 </div>
+
+<script>
+    // Inisialisasi Feather Icons
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    });
+</script>
 @endsection

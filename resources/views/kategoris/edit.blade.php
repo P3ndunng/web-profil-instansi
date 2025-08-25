@@ -17,7 +17,7 @@
     </div>
     @endif
 
-    <form action="{{ route('kategoris.update', $kategori->id) }}" method="POST">
+    <form action="{{ route('admin.kategoris.update', $kategori->id) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -31,8 +31,23 @@
             <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3">{{ old('deskripsi', $kategori->deskripsi) }}</textarea>
         </div>
 
-        <a href="{{ route('kategoris.index') }}" class="btn btn-secondary">Batal</a>
-        <button type="submit" class="btn btn-success">Perbarui</button>
+        <div class="d-flex gap-2">
+            <a href="{{ route('admin.kategoris.index') }}" class="btn btn-secondary">
+                <i data-feather="arrow-left" class="icon-xs"></i> Batal
+            </a>
+            <button type="submit" class="btn btn-success">
+                <i data-feather="save" class="icon-xs"></i> Perbarui
+            </button>
+        </div>
     </form>
 </div>
+
+<script>
+    // Inisialisasi Feather Icons
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    });
+</script>
 @endsection

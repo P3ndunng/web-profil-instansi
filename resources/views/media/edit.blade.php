@@ -3,11 +3,7 @@
 @section('content')
 <div class="container">
     <h4>Edit Media</h4>
-
-    <?php
-    {{--  var_dump($media);  --}}F
-    ?>
-<form action="{{ route('media.update', $media->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('admin.media.update', $media->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 

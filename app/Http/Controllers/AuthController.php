@@ -23,11 +23,11 @@ class AuthController extends Controller
     {
         $credentials = $request->only('email', 'password');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
             $request->session()->regenerate();
-            // echo"login sukses";
-            // exit;
-           return redirect()->intended('/admin/dashboard');
+
+            // ✅ Gunakan nama route, bukan hardcoded URL
+            return redirect()->route('admin.dashboard');
         }
 
         return $this->sendFailedLoginResponse($request);
@@ -38,6 +38,7 @@ class AuthController extends Controller
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
-        return redirect('/login');
+
+        return redirect()->route('login');
     }
 }

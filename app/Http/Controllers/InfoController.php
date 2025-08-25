@@ -4,270 +4,383 @@ namespace App\Http\Controllers;
 
 use App\Models\Info;
 use App\Models\Kategori;
-use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class InfoController extends Controller
 {
-    // =======================
-    // DASHBOARD CRUD
-    // =======================
-    public function index()
+    // ========================
+    // BERITA PUBLIK
+    // ========================
+    public function beritaPublik()
     {
-        $infos = Info::with('kategori')->latest()->get();
-        return view('infos.index', compact('infos'));
+        $beritas = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Berita'))
+            ->latest()
+            ->paginate(9);
+
+        return view('infoP.berita', compact('beritas'));
     }
 
-    public function create(Request $request)
+    // ========================
+    // ADMIN BERITA
+    // ========================
+    public function indexBerita()
     {
-        $kategoris = Kategori::all();
-        $selectedKategori = $request->get('kategori');
+        $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Berita'))
+            ->latest()
+            ->get();
 
-        // Jika parameter kategori ada, tampilkan form khusus
-        if ($selectedKategori) {
-            $viewName = 'infos.create-' . strtolower($selectedKategori);
-
-            // Pastikan view exists
-            if (view()->exists($viewName)) {
-                // Untuk agenda, kita perlu pastikan kategori agenda ada
-                if ($selectedKategori === 'Agenda') {
-                    $agendaKategori = Kategori::where('nama', 'Agenda')->first();
-
-                    if (!$agendaKategori) {
-                        return redirect()->route('infos.index')
-                            ->with('error', 'Kategori Agenda tidak ditemukan. Silahkan buat kategori Agenda terlebih dahulu.');
-                    }
-
-                    return view($viewName, compact('kategoris', 'agendaKategori'));
-                }
-
-                return view($viewName, compact('kategoris'));
-            }
-        }
-
-        return view('infos.create', compact('kategoris'));
+        return view('infos.berita.index', compact('items'));
     }
 
-    public function store(Request $request)
+    public function createBerita()
     {
-        // Validasi dasar
+        return view('infos.berita.create');
+    }
+
+    public function storeBerita(Request $request)
+    {
         $request->validate([
-            'kategori_id' => 'required|exists:kategoris,id',
             'judul' => 'required|string|max:255',
-            'isi' => 'nullable|string',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            'isi' => 'required',
+            'tanggal' => 'nullable|date',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        // Dapatkan kategori untuk validasi tambahan
-        $kategori = Kategori::find($request->kategori_id);
+        $data = $request->only(['judul','isi','tanggal']);
+        $data['kategori_id'] = Kategori::where('nama','Berita')->first()->id ?? null;
 
-        if (!$kategori) {
-            return redirect()->back()
-                ->with('error', 'Kategori tidak valid.')
-                ->withInput();
-        }
-
-        // Validasi khusus untuk agenda
-        if ($kategori->nama == 'Agenda') {
-            $request->validate([
-                'tanggal' => 'required|date',
-                'tempat' => 'required|string|max:255',
-            ]);
-        }
-
-        $data = $request->only('kategori_id', 'judul', 'isi');
-
-        // Tambahkan field khusus untuk agenda
-        if ($kategori->nama == 'Agenda') {
-            $data['tanggal'] = $request->tanggal;
-            $data['tempat'] = $request->tempat;
-        }
-
-        // Upload gambar
         if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('gambar_info', 'public');
+            $data['gambar'] = $request->file('gambar')->store('berita', 'public');
         }
 
-        // Buat info
-        $info = Info::create($data);
-
-        // Jika kategori adalah Berita, buat juga di tabel berita
-        if ($info->kategori->nama == 'Berita') {
-            Berita::create([
-                'judul' => $info->judul,
-                'isi' => $info->isi,
-                'gambar' => $info->gambar,
-                'created_at' => now(),
-                'updated_at' => now()
-            ]);
-        }
-
-        return redirect()->route('infos.index')->with('success', 'Info berhasil ditambahkan.');
+        Info::create($data);
+        return redirect()->route('admin.berita.index')->with('success','Berita berhasil ditambahkan');
     }
 
-    public function edit(Request $request, $id)
+    public function editBerita($id)
     {
-        try {
-            // Gunakan findOrFail untuk menghindari null
-            $info = Info::with('kategori')->findOrFail($id);
-            $kategoris = Kategori::all();
-
-            // Pastikan kategori tidak null
-            if ($info->kategori && $info->kategori->nama === 'Agenda') {
-                $viewName = 'infos.edit-agenda';
-                if (view()->exists($viewName)) {
-                    return view($viewName, compact('info', 'kategoris'));
-                }
-            }
-
-            return view('infos.edit', compact('info', 'kategoris'));
-
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect()->route('infos.index')
-                ->with('error', 'Data tidak ditemukan.');
-        }
+        $item = Info::findOrFail($id);
+        return view('infos.berita.edit', compact('item'));
     }
 
-    public function update(Request $request, $id)
+    public function updateBerita(Request $request, $id)
     {
-        try {
-            // Gunakan findOrFail untuk menghindari null
-            $info = Info::findOrFail($id);
+        $item = Info::findOrFail($id);
 
-            // Validasi dasar
-            $request->validate([
-                'kategori_id' => 'required|exists:kategoris,id',
-                'judul' => 'required|string|max:255',
-                'isi' => 'nullable|string',
-                'gambar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-            ]);
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required',
+            'tanggal' => 'nullable|date',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
-            // Dapatkan kategori untuk validasi tambahan
-            $kategori = Kategori::find($request->kategori_id);
+        $data = $request->only(['judul','isi','tanggal']);
 
-            if (!$kategori) {
-                return redirect()->back()
-                    ->with('error', 'Kategori tidak valid.')
-                    ->withInput();
+        if ($request->hasFile('gambar')) {
+            if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+                Storage::disk('public')->delete($item->gambar);
             }
-
-            // Validasi khusus untuk agenda
-            if ($kategori->nama == 'Agenda') {
-                $request->validate([
-                    'tanggal' => 'required|date',
-                    'tempat' => 'required|string|max:255',
-                ]);
-            }
-
-            // Simpan judul lama untuk pencarian di tabel berita
-            $judulLama = $info->judul;
-
-            $data = $request->only('kategori_id', 'judul', 'isi');
-
-            // Tambahkan field khusus untuk agenda
-            if ($kategori->nama == 'Agenda') {
-                $data['tanggal'] = $request->tanggal;
-                $data['tempat'] = $request->tempat;
-            } else {
-                // Hapus field khusus agenda jika kategori diubah
-                $data['tanggal'] = null;
-                $data['tempat'] = null;
-            }
-
-            // Upload gambar baru jika ada
-            if ($request->hasFile('gambar')) {
-                // Hapus gambar lama jika ada
-                if ($info->gambar) {
-                    Storage::disk('public')->delete($info->gambar);
-                }
-                $data['gambar'] = $request->file('gambar')->store('gambar_info', 'public');
-            }
-
-            // Update info
-            $info->update($data);
-
-            // Update juga di tabel berita jika kategori adalah Berita
-            if ($kategori->nama == 'Berita') {
-                $berita = Berita::where('judul', $judulLama)->first();
-
-                if ($berita) {
-                    $berita->update([
-                        'judul' => $info->judul,
-                        'isi' => $info->isi,
-                        'gambar' => $info->gambar
-                    ]);
-                } else {
-                    // Jika tidak ditemukan, buat entri baru
-                    Berita::create([
-                        'judul' => $info->judul,
-                        'isi' => $info->isi,
-                        'gambar' => $info->gambar,
-                        'created_at' => now(),
-                        'updated_at' => now()
-                    ]);
-                }
-            } else {
-                // Jika kategori diubah dari Berita ke lainnya, hapus dari tabel berita
-                $berita = Berita::where('judul', $judulLama)->first();
-                if ($berita) {
-                    $berita->delete();
-                }
-            }
-
-            return redirect()->route('infos.index')->with('success', 'Info berhasil diperbarui.');
-
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect()->route('infos.index')
-                ->with('error', 'Data tidak ditemukan.');
+            $data['gambar'] = $request->file('gambar')->store('berita', 'public');
         }
+
+        $item->update($data);
+        return redirect()->route('admin.berita.index')->with('success','Berita berhasil diperbarui');
     }
 
-    public function destroy($id)
+    public function destroyBerita($id)
     {
-        try {
-            // Gunakan findOrFail untuk menghindari null
-            $info = Info::with('kategori')->findOrFail($id);
+        $item = Info::findOrFail($id);
 
-            // Hapus juga dari tabel berita jika ada
-            if ($info->kategori && $info->kategori->nama == 'Berita') {
-                $berita = Berita::where('judul', $info->judul)->first();
-                if ($berita) {
-                    $berita->delete();
-                }
-            }
-
-            // Hapus gambar jika ada
-            if ($info->gambar) {
-                Storage::disk('public')->delete($info->gambar);
-            }
-
-            $info->delete();
-
-            return redirect()->route('infos.index')->with('success', 'Info berhasil dihapus.');
-
-        } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return redirect()->route('infos.index')
-                ->with('error', 'Data tidak ditemukan.');
+        if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+            Storage::disk('public')->delete($item->gambar);
         }
+
+        $item->delete();
+        return redirect()->route('admin.berita.index')->with('success','Berita berhasil dihapus');
     }
 
-    // =======================
-    // METHOD BANTUAN: Pastikan Kategori Agenda Ada
-    // =======================
-    public function ensureAgendaCategory()
+    // ========================
+    // ADMIN AGENDA
+    // ========================
+    public function indexAgenda()
     {
-        $agendaKategori = Kategori::where('nama', 'Agenda')->first();
+        $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Agenda'))
+            ->latest()->get();
+        return view('infos.agenda.index', compact('items'));
+    }
 
-        if (!$agendaKategori) {
-            $agendaKategori = Kategori::create([
-                'nama' => 'Agenda',
-                'deskripsi' => 'Kategori untuk agenda kegiatan'
-            ]);
+    public function createAgenda()
+    {
+        return view('infos.agenda.create');
+    }
 
-            return $agendaKategori;
+    public function storeAgenda(Request $request)
+    {
+        $request->validate([
+            'tanggal' => 'required|date',
+            'nama_kegiatan' => 'required|string|max:255',
+            'tempat' => 'required|string|max:255',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $kategori = Kategori::where('nama','Agenda')->first();
+        if (!$kategori) {
+            return redirect()->back()->with('error', 'Kategori Agenda tidak ditemukan.');
         }
 
-        return $agendaKategori;
+        $data = [
+            'judul' => $request->nama_kegiatan,
+            'isi' => $request->tempat,
+            'tanggal' => $request->tanggal,
+            'kategori_id' => $kategori->id,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('agenda', 'public');
+        }
+
+        Info::create($data);
+
+        return redirect()->route('admin.agenda.index')->with('success','Agenda berhasil ditambahkan');
     }
+
+    public function editAgenda($id)
+    {
+        $item = Info::findOrFail($id);
+        return view('infos.agenda.edit', compact('item'));
+    }
+
+    public function updateAgenda(Request $request, $id)
+    {
+        $item = Info::findOrFail($id);
+
+        $request->validate([
+            'tanggal' => 'required|date',
+            'nama_kegiatan' => 'required|string|max:255',
+            'tempat' => 'required|string|max:255',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $data = [
+            'judul' => $request->nama_kegiatan,
+            'isi' => $request->tempat,
+            'tanggal' => $request->tanggal,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+                Storage::disk('public')->delete($item->gambar);
+            }
+            $data['gambar'] = $request->file('gambar')->store('agenda', 'public');
+        }
+
+        $item->update($data);
+
+        return redirect()->route('admin.agenda.index')->with('success','Agenda berhasil diperbarui');
+    }
+
+    public function destroyAgenda($id)
+    {
+        $item = Info::findOrFail($id);
+
+        if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+            Storage::disk('public')->delete($item->gambar);
+        }
+
+        $item->delete();
+
+        return redirect()->route('admin.agenda.index')->with('success','Agenda berhasil dihapus');
+    }
+
+
+    // ========================
+    // ADMIN ARTIKEL
+    // ========================
+    public function indexArtikel()
+    {
+        $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Artikel'))
+            ->latest()->get();
+        return view('infos.artikel.index', compact('items'));
+    }
+
+    public function createArtikel()
+    {
+        return view('infos.artikel.create');
+    }
+
+    public function storeArtikel(Request $request)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required',
+            'tanggal' => 'nullable|date',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $kategori = Kategori::where('nama','Artikel')->first();
+        if (!$kategori) {
+            return redirect()->back()->with('error', 'Kategori Artikel tidak ditemukan.');
+        }
+
+        $data = [
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'tanggal' => $request->tanggal,
+            'kategori_id' => $kategori->id,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('artikel', 'public');
+        }
+
+        Info::create($data);
+
+        return redirect()->route('admin.artikel.index')->with('success','Artikel berhasil ditambahkan');
+    }
+
+    public function editArtikel($id)
+    {
+        $item = Info::findOrFail($id);
+        return view('infos.artikel.edit', compact('item'));
+    }
+
+    public function updateArtikel(Request $request, $id)
+    {
+        $item = Info::findOrFail($id);
+
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required',
+            'tanggal' => 'nullable|date',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $data = [
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'tanggal' => $request->tanggal,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+                Storage::disk('public')->delete($item->gambar);
+            }
+            $data['gambar'] = $request->file('gambar')->store('artikel', 'public');
+        }
+
+        $item->update($data);
+
+        return redirect()->route('admin.artikel.index')->with('success','Artikel berhasil diperbarui');
+    }
+
+    public function destroyArtikel($id)
+    {
+        $item = Info::findOrFail($id);
+
+        if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+            Storage::disk('public')->delete($item->gambar);
+        }
+
+        $item->delete();
+
+        return redirect()->route('admin.artikel.index')->with('success','Artikel berhasil dihapus');
+    }
+
+    // ========================
+    // ADMIN PENGUMUMAN
+    // ========================
+    public function indexPengumuman()
+    {
+        $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Pengumuman'))
+            ->latest()
+            ->get();
+
+        return view('infos.pengumuman.index', compact('items'));
+    }
+
+    public function createPengumuman()
+    {
+        return view('infos.pengumuman.create');
+    }
+
+    public function storePengumuman(Request $request)
+    {
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required',
+            'tanggal' => 'nullable|date',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $kategori = Kategori::where('nama', 'Pengumuman')->first();
+        if (!$kategori) {
+            return redirect()->back()->with('error', 'Kategori Pengumuman tidak ditemukan.');
+        }
+
+        $data = [
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'tanggal' => $request->tanggal,
+            'kategori_id' => $kategori->id,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            $data['gambar'] = $request->file('gambar')->store('pengumuman', 'public');
+        }
+
+        Info::create($data);
+
+        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil ditambahkan');
+    }
+
+    public function editPengumuman($id)
+    {
+        $item = Info::findOrFail($id);
+        return view('infos.pengumuman.edit', compact('item'));
+    }
+
+    public function updatePengumuman(Request $request, $id)
+    {
+        $item = Info::findOrFail($id);
+
+        $request->validate([
+            'judul' => 'required|string|max:255',
+            'isi' => 'required',
+            'tanggal' => 'nullable|date',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $data = [
+            'judul' => $request->judul,
+            'isi' => $request->isi,
+            'tanggal' => $request->tanggal,
+        ];
+
+        if ($request->hasFile('gambar')) {
+            if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+                Storage::disk('public')->delete($item->gambar);
+            }
+            $data['gambar'] = $request->file('gambar')->store('pengumuman', 'public');
+        }
+
+        $item->update($data);
+
+        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil diperbarui');
+    }
+
+    public function destroyPengumuman($id)
+    {
+        $item = Info::findOrFail($id);
+
+        if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+            Storage::disk('public')->delete($item->gambar);
+        }
+
+        $item->delete();
+
+        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil dihapus');
+    }
+
+
 }

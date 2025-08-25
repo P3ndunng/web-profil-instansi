@@ -11,10 +11,11 @@
     <div class="alert alert-success">{{ session('success') }}</div>
   @endif
 
-  {{-- Tombol Tambah --}}
+  {{-- Tombol Tambah Hanya Icon & Biru --}}
   <div class="mb-3">
-    <a href="{{ route('users.create') }}" class="btn btn-primary">
-      <i data-feather="plus-circle" class="icon-xs"></i> Tambah User
+    <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-icon" title="Tambah User"
+       style="padding: 0.375rem; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;">
+      <i data-feather="plus-circle"></i>
     </a>
   </div>
 
@@ -37,18 +38,22 @@
             <td>{{ $user->name }}</td>
             <td>{{ $user->email }}</td>
             <td>{{ ucfirst($user->role) }}</td>
-            <td>
-              <div class="d-flex gap-2">
-                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-sm btn-warning" title="Edit">
-                  <i data-feather="edit" class="icon-xs"></i>
+            <td class="text-center">
+              <div class="d-flex justify-content-center gap-1">
+                {{-- Tombol Edit Hanya Icon & Kuning --}}
+                <a href="{{ route('admin.users.edit', $user->id) }}" class="btn btn-warning btn-sm btn-icon" title="Edit"
+                   style="padding: 0.25rem; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
+                  <i data-feather="edit"></i>
                 </a>
 
-                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline"
-                  onsubmit="return confirm('Yakin ingin menghapus user ini?')">
+                {{-- Tombol Hapus Hanya Icon & Merah --}}
+                <form action="{{ route('admin.users.destroy', $user->id) }}" method="POST" class="d-inline"
+                      onsubmit="return confirm('Yakin ingin menghapus user ini?')">
                   @csrf
                   @method('DELETE')
-                  <button type="submit" class="btn btn-sm btn-danger" title="Hapus">
-                    <i data-feather="trash-2" class="icon-xs"></i>
+                  <button type="submit" class="btn btn-danger btn-sm btn-icon" title="Hapus"
+                          style="padding: 0.25rem; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
+                    <i data-feather="trash-2"></i>
                   </button>
                 </form>
               </div>
@@ -56,7 +61,7 @@
           </tr>
         @empty
           <tr>
-            <td colspan="5" class="text-center">Tidak ada data user.</td>
+            <td colspan="5" class="text-center text-muted">Tidak ada data user.</td>
           </tr>
         @endforelse
       </tbody>
@@ -65,7 +70,7 @@
 </div>
 
 <script>
-    // Inisialisasi Feather Icons untuk konten yang dinamis
+    // Inisialisasi Feather Icons
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof feather !== 'undefined') {
             feather.replace();

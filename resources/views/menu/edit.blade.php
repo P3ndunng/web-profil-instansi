@@ -4,7 +4,7 @@
 <div class="container">
     <h4>Edit Menu</h4>
 
-    <form action="{{ route('menu.update', $menu->id) }}" method="POST">
+    <form action="{{ route('admin.menu.update', $menu->id) }}" method="POST">
         @csrf
         @method('PUT')
 

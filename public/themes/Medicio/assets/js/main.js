@@ -343,3 +343,46 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', function() {
+      // Fungsi untuk memuat konten secara dinamis
+      function loadContent(url, targetId) {
+        fetch(url)
+          .then(response => response.text())
+          .then(html => {
+            document.getElementById(targetId).innerHTML = html;
+            // Scroll ke bagian yang dituju
+            document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+          })
+          .catch(err => console.error('Gagal memuat konten:', err));
+      }
+
+      // Tangani klik pada semua link navbar
+      document.querySelectorAll('#navbar a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          // Jika link memiliki href yang dimulai dengan # (anchor link)
+          if (this.getAttribute('href').startsWith('#')) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+              targetElement.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+          // Jika link mengarah ke route lain (misal: profil)
+          else if (this.getAttribute('href').startsWith('{{ route') ||
+                   !this.getAttribute('href').startsWith('http')) {
+            e.preventDefault();
+            const url = this.getAttribute('href');
+            // Memuat konten ke dalam main
+            loadContent(url, 'main');
+          }
+          // Link eksternal dibiarkan normal
+        });
+      });
+
+      // Tangani perubahan URL saat menggunakan tombol back/forward browser
+      window.addEventListener('popstate', function() {
+        loadContent(window.location.pathname, 'main');
+      });
+    });

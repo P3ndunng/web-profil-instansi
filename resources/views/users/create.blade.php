@@ -50,8 +50,23 @@
             <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required minlength="6">
         </div>
 
-        <a href="{{ route('users.index') }}" class="btn btn-secondary">Batal</a>
-        <button type="submit" class="btn btn-primary">Simpan</button>
+        <div class="d-flex gap-2">
+            <a href="{{ route('users.index') }}" class="btn btn-secondary">
+                <i data-feather="arrow-left" class="icon-xs"></i> Batal
+            </a>
+            <button type="submit" class="btn btn-primary">
+                <i data-feather="save" class="icon-xs"></i> Simpan
+            </button>
+        </div>
     </form>
 </div>
+
+<script>
+    // Inisialisasi Feather Icons
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    });
+</script>
 @endsection

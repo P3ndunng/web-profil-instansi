@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Galeri;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class GaleriController extends Controller
 {
@@ -50,6 +51,11 @@ class GaleriController extends Controller
         $data = ['judul' => $request->judul];
 
         if ($request->hasFile('gambar')) {
+            // Hapus gambar lama
+            if ($galeri->gambar && Storage::disk('public')->exists($galeri->gambar)) {
+                Storage::disk('public')->delete($galeri->gambar);
+            }
+
             $file = $request->file('gambar')->store('galeri', 'public');
             $data['gambar'] = $file;
         }
@@ -61,6 +67,10 @@ class GaleriController extends Controller
 
     public function destroy(Galeri $galeri)
     {
+        if ($galeri->gambar && Storage::disk('public')->exists($galeri->gambar)) {
+            Storage::disk('public')->delete($galeri->gambar);
+        }
+
         $galeri->delete();
         return redirect()->route('galeri.index')->with('success', 'Galeri berhasil dihapus');
     }

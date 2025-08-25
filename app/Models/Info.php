@@ -14,6 +14,8 @@ class Info extends Model
         'judul',
         'isi',
         'gambar',
+        'tanggal',
+        'tempat',
     ];
 
     public function kategori()

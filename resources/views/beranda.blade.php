@@ -149,7 +149,7 @@
             <li class="dropdown">
             <a href="#"><span>INFORMASI PUBLIK</span> <i class="bi bi-chevron-down"></i></a>
             <ul class="dropdown-menu">
-                <li><a href="#berita">BERITA TERKINI</a></li>
+                <li><a href="{{ route('berita.index') }}">BERITA TERKINI</a></li>
                 <li><a href="#artikel">ARTIKEL</a></li>
                 <li><a href="#zona-integritas">PEMBANGUNAN ZONA INTEGRITAS</a></li>
                 <li><a href="#protokol-covid">PROTOKOL KESEHATAN COVID19</a></li>
@@ -523,32 +523,26 @@
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
-      <div class="container" data-aos="fade-up">
-
+    <div class="container" data-aos="fade-up">
         <div class="section-title">
-          <h2>Gallery</h2
+        <h2>Gallery</h2>
         </div>
 
         <div class="gallery-slider swiper">
-          <div class="swiper-wrapper align-items-center">
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-1.jpg"><img src="themes/medicio/assets/img/gallery/gallery-1.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-2.jpg"><img src="themes/medicio/assets/img/gallery/gallery-2.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-3.jpg"><img src="themes/medicio/assets/img/gallery/gallery-3.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-4.jpg"><img src="themes/medicio/assets/img/gallery/gallery-4.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-5.jpg"><img src="themes/medicio/assets/img/gallery/gallery-5.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-6.jpg"><img src="themes/medicio/assets/img/gallery/gallery-6.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-7.jpg"><img src="themes/medicio/assets/img/gallery/gallery-7.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-8.jpg"><img src="themes/medicio/assets/img/gallery/gallery-8.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-9.jpg"><img src="themes/medicio/assets/img/gallery/gallery-9.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-10.jpg"><img src="themes/medicio/assets/img/gallery/gallery-10.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-11.jpg"><img src="themes/medicio/assets/img/gallery/gallery-11.jpg" class="img-fluid" alt=""></a></div>
-            <div class="swiper-slide"><a class="gallery-lightbox" href="themes/medicio/assets/img/gallery/gallery-12.jpg"><img src="themes/medicio/assets/img/gallery/gallery-12.jpg" class="img-fluid" alt=""></a></div>
-          </div>
-          <div class="swiper-pagination"></div>
+        <div class="swiper-wrapper align-items-center">
+            @foreach($galeris as $galeri)
+            <div class="swiper-slide">
+                <a class="gallery-lightbox" href="{{ asset('storage/' . $galeri->gambar) }}">
+                <img src="{{ asset('storage/' . $galeri->gambar) }}" class="img-fluid" alt="{{ $galeri->judul }}">
+                </a>
+            </div>
+            @endforeach
         </div>
-
-      </div>
-    </section><!-- End Gallery Section -->
+        <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    </section>
+    <!-- End Gallery Section -->
 
     <!-- ======= Link Terkait Section ======= -->
         <section id="link-terkait" class="link-terkait">

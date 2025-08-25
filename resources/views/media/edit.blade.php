@@ -4,13 +4,16 @@
 <div class="container">
     <h4>Edit Media</h4>
 
-    <form action="{{ route('media.update', $medium->id) }}" method="POST" enctype="multipart/form-data">
+    <?php
+    {{--  var_dump($media);  --}}F
+    ?>
+<form action="{{ route('media.update', $media->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="mb-3">
             <label>Judul</label>
-            <input type="text" name="judul" value="{{ $medium->judul }}" class="form-control" required>
+            <input type="text" name="judul" value="{{ $media->judul }}" class="form-control" required>
         </div>
 
         <div class="mb-3">

@@ -42,11 +42,41 @@
 
         <div class="mb-3">
             <label for="gambar" class="form-label">Gambar</label>
-            <input type="file" name="gambar" class="form-control">
+            <input type="file" name="gambar" class="form-control" accept="image/*" onchange="previewImage(event)">
+            <img id="preview" src="#" alt="Preview Gambar" class="mt-2 img-thumbnail d-none" width="150">
         </div>
 
-        <button type="submit" class="btn btn-success">Simpan</button>
-        <a href="{{ route('infos.index') }}" class="btn btn-secondary">Batal</a>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">
+                <i data-feather="save" class="icon-xs"></i> Simpan
+            </button>
+            <a href="{{ route('infos.index') }}" class="btn btn-secondary">
+                <i data-feather="arrow-left" class="icon-xs"></i> Batal
+            </a>
+        </div>
     </form>
 </div>
+
+<script>
+    // Inisialisasi Feather Icons
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof feather !== 'undefined') {
+            feather.replace();
+        }
+    });
+
+    // Fungsi preview gambar
+    function previewImage(event) {
+        let input = event.target;
+        let preview = document.getElementById('preview');
+        if (input.files && input.files[0]) {
+            let reader = new FileReader();
+            reader.onload = function(e) {
+                preview.src = e.target.result;
+                preview.classList.remove('d-none');
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
 @endsection

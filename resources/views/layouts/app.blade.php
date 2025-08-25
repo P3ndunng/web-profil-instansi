@@ -24,6 +24,11 @@
         <link href="/themes/minia/minia/assets//css/icons.min.css" rel="stylesheet" type="text/css" />
         <!-- App Css-->
         <link href="/themes/minia/minia/assets//css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+        <!-- Di dalam head section, setelah App Css-->
+        <link href="/themes/minia/minia/assets//css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
+
+        <!-- Tambahkan custom CSS -->
+        <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
 
     </head>
 
@@ -343,28 +348,28 @@
                             <li>
                                 <a href="{{ route('menu.index') }}">
                                     <i data-feather="grid"></i>
-                                    <span data-key="t-ui-elements">menejemen Menu</span>
+                                    <span data-key="t-ui-elements">Manajemen Menu</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('galeri.index') }}">
                                     <i data-feather="image"></i>
-                                    <span data-key="t-forms">Galeri</span>
+                                    <span data-key="t-forms">Manajemen Galeri</span>
                                 </a>
                             </li>
 
                             <li>
                                    <a href="{{ route('kontak.index') }}">
                                     <i data-feather="phone"></i>
-                                    <span data-key="t-tables">Menejemen kontak</span>
+                                    <span data-key="t-tables">Manajemen kontak</span>
                                 </a>
                             </li>
 
                             <li>
                                 <a href="{{ route('media.index') }}">
                                     <i data-feather="download"></i>
-                                    <span data-key="t-charts">File Download</span>
+                                    <span data-key="t-charts">Manajemen File</span>
                                 </a>
                             </li>
 
@@ -548,6 +553,25 @@
         <script src="/themes/minia/minia/assets//js/pages/dashboard.init.js"></script>
 
         <script src="/themes/minia/minia/assets//js/app.js"></script>
+
+        <!-- Pastikan Feather Icons diinisialisasi -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof feather !== 'undefined') {
+                    feather.replace();
+
+                    // Inisialisasi ulang ketika konten berubah (untuk tab, modal, dll)
+                    const observer = new MutationObserver(function() {
+                        feather.replace();
+                    });
+
+                    observer.observe(document.body, {
+                        childList: true,
+                        subtree: true
+                    });
+                }
+            });
+        </script>
 
     </body>
 

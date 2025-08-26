@@ -33,7 +33,7 @@ class GaleriController extends Controller
             'gambar' => $file
         ]);
 
-        return redirect()->route('galeri.index')->with('success', 'Gambar berhasil ditambahkan');
+        return redirect()->route('admin.galeri.index')->with('success', 'Gambar berhasil ditambahkan');
     }
 
     public function edit(Galeri $galeri)
@@ -62,7 +62,7 @@ class GaleriController extends Controller
 
         $galeri->update($data);
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil diupdate');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil diupdate');
     }
 
     public function destroy(Galeri $galeri)
@@ -72,6 +72,6 @@ class GaleriController extends Controller
         }
 
         $galeri->delete();
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil dihapus');
+        return redirect()->route('admin.galeri.index')->with('success', 'Galeri berhasil dihapus');
     }
 }

@@ -11,6 +11,7 @@ use App\Http\Controllers\MediaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ProfilController;
 use App\Models\Galeri;
+use App\Http\Controllers\CkeditorUploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::get('/', function () {
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
 
 // BERITA PUBLIK
-Route::get('/berita', [InfoController::class, 'beritaPublik'])->name('berita.index');
+Route::get('/berita', [InfoController::class, 'beritaPublik'])->name('infoP.berita');
 // Bisa ditambahkan artikel/pengumuman/agenda publik jika perlu
 
 /*
@@ -98,3 +99,5 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::put('/agenda/{id}', [InfoController::class, 'updateAgenda'])->name('agenda.update');
     Route::delete('/agenda/{id}', [InfoController::class, 'destroyAgenda'])->name('agenda.destroy');
 });
+
+Route::post('/ckeditor/upload', [CkeditorUploadController::class, 'upload'])->name('ckeditor.upload');

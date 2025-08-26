@@ -1,11 +1,11 @@
 
-<!doctype html>/themes/minia/minia/assets/
+<!doctype html>
 <html lang="en">
 
     <head>
 
         <meta charset="utf-8" />
-        <title>Dashboard | Minia - Minimal Admin & Dashboard Template</title>
+        <title>Dashboard | BBPTUHPT BaturradenS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
@@ -29,6 +29,9 @@
 
         <!-- Tambahkan custom CSS -->
         <link href="{{ asset('css/custom.css') }}" rel="stylesheet" type="text/css" />
+
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     </head>
 

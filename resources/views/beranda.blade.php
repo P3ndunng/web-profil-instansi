@@ -99,100 +99,70 @@
       <img src="themes/medicio/assets/img/header.png" alt="Header Text Image" class="ms-2" style="width: 380px; max-height:60px;">
     </div>
 
-    <!-- Navbar -->
-        <nav id="navbar" class="navbar">
-        <ul>
-            <li><a class="nav-link scrollto active" href="#beranda">BERANDA</a></li>
+    <!-- Navbar Dinamis -->
+    <nav id="navbar" class="navbar">
+      <ul>
+        @php
+          $menus = App\Models\Menu::mainMenus()->with(['children' => function($query) {
+              $query->where('is_active', true)->orderBy('urutan');
+          }])->get();
+        @endphp
 
-            <!-- Dropdown PROFIL -->
-            <li class="dropdown">
-            <a href="#"><span>PROFIL</span> <i class="bi bi-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('profil') }}">TENTANG BBPTUHPT</a></li>
-                <li><a href="#struktur">STRUKTUR ORGANISASI</a></li>
-                <li><a href="#sejarah">SEJARAH</a></li>
-                <li><a href="#visi">VISI & MISI</a></li>
-                <li><a href="#moto">MOTO DAN JANJI LAYANAN</a></li>
-                <li><a href="#tugas">TUGAS POKOK DAN FUNGSI</a></li>
-                <li><a href="#prestasi">PRESTASI</a></li>
-                <li><a href="#maklumat">MAKLUMAT PELAYANAN</a></li>
-                <li><a href="#sdm">SDM</a></li>
-                <li><a href="#kebijakan">KEBIJAKAN MUTU</a></li>
-                <li><a href="#gallery">GALLERY</a></li>
-            </ul>
-            </li>
-
-            <!-- Dropdown LAYANAN -->
-            <li class="dropdown">
-            <a href="#"><span>LAYANAN</span> <i class="bi bi-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="#produk">PRODUK KAMI</a></li>
-                <li><a href="#alur">ALUR PEMBELIAN</a></li>
-                <li class="dropdown">
-                <a href="#"><span>PERMOHONAN LAYANAN ONLINE</span> <i class="bi bi-chevron-right"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="#sub1">PEMBELIAN BIBIT ONLINE</a></li>
-                    <li><a href="#sub2">BIAYA DAN TARIF </a></li>
-                    <li><a href="#sub3">KUNJUNGAN PENELITIAN DAN MAGANG </a></li>
-                </ul>
-                </li>
-                <li><a href="#kunjungan">KUNJUNGAN, PENELITIAN & PEMAGANGAN</a></li>
-                <li><a href="#bimbingan">BIMBINGAN TEKNIS</a></li>
-                <li><a href="#sewa">LAYANAN SEWA ASET BALAI</a></li>
-                <li><a href="#lab">LABORATORIUM</a></li>
-                <li><a href="#harga">HARGA TERNAK DAN HPT</a></li>
-                <li><a href="#survei">SURVEY KEPUASAN MASYARAKAT</a></li>
-            </ul>
-            </li>
-
-            <!-- Dropdown INFORMASI PUBLIK -->
-            <li class="dropdown">
-            <a href="#"><span>INFORMASI PUBLIK</span> <i class="bi bi-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="{{ route('berita.index') }}">BERITA TERKINI</a></li>
-                <li><a href="#artikel">ARTIKEL</a></li>
-                <li><a href="#zona-integritas">PEMBANGUNAN ZONA INTEGRITAS</a></li>
-                <li><a href="#protokol-covid">PROTOKOL KESEHATAN COVID19</a></li>
-                <li class="dropdown">
-                <a href="#"><span>PORTAL PPID</span> <i class="bi bi-chevron-right"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a href="https://ppid.pertanian.go.id" target="_blank">PPID</a></li>
-                    <li><a href="#informasi-setiap-saat">INFORMASI PUBLIK SETIAP SAAT</a></li>
-                    <li><a href="#informasi-berkala">INFORMASI PUBLIK BERKALA</a></li>
-                    <li><a href="#informasi-serta-merta">INFORMASI PUBLIK SERTA MERTA</a></li>
-                    <li><a href="#tata-cara">TATA CARA PERMOHONAN INFORMASI PUBLIK</a></li>
-                    <li><a href="#hak-informasi">HAK ATAS INFORMASI PUBLIK</a></li>
-                    <li><a href="#mekanisme-keberatan">MEKANISME PENGAJUAN KEBERATAN</a></li>
-                    <li><a href="#sengketa-informasi">PENANGANAN SENGKETA INFORMASI</a></li>
-                </ul>
-                </li>
-                <li><a href="#laporan-ikm">LAPORAN IKM</a></li>
-                <li><a href="#bibit-sapi-kambing">DISTRIBUSI BIBIT SAPI PERAH & KAMBING</a></li>
-                <li><a href="#bibit-hpt">DISTRIBUSI BIBIT HPT</a></li>
-                <li><a href="#pengaduan">PENGADUAN MASYARAKAT</a></li>
-                <li><a href="#regulasi">REGULASI DAN PERATURAN</a></li>
-                <li><a href="#rancangan-kebijakan">DAFTAR RANCANGAN KEBIJAKAN</a></li>
-                <li><a href="#grafik">GRAFIK PERKEMBANGAN</a></li>
-            </ul>
-            </li>
-
-            <!-- Dropdown INOVASI -->
-            <li class="dropdown">
-            <a href="#"><span>INOVASI</span> <i class="bi bi-chevron-down"></i></a>
-            <ul class="dropdown-menu">
-                <li><a href="#halo drh">HALO DRH</a></li>
-                <li><a href="#braden">BRADEN</a></li>
-                <li><a href="#Arevy">AREVY SYSTEM</a></li>
-                <li><a href="#ruminansia">RUMINANSIA OLINE</a></li>
-                <li><a href="#breding">BREEDING ONLINE</a></li>
-                <li><a href="#e-personal">E-PERSONAL</a></li>
-                <li><a href="#e-dupak">E-DUPAK</a></li>
-                <li><a href="#buku">BUKU PINTAR INOVASI</a></li>
-            </ul>
-            <li><a class="nav-link scrollto" href="#unduh">UNDUH</a></li>
-            <li><a class="nav-link scrollto" href="#kontak">KONTAK KAMI</a></li>
-        </ul>
-        </nav>
+        @foreach($menus as $menu)
+          <li class="{{ $menu->hasChildren() ? 'dropdown' : '' }}">
+            @if($menu->hasChildren())
+              <!-- Menu dengan Sub Menu (Dropdown) -->
+              <a href="{{ $menu->link ?: '#' }}" target="{{ $menu->target }}">
+                <span>{{ strtoupper($menu->nama) }}</span>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                @foreach($menu->children as $child)
+                  @if($child->hasChildren())
+                    <!-- Sub Menu yang juga punya anak -->
+                    <li class="dropdown">
+                      <a href="{{ $child->link ?: '#' }}" target="{{ $child->target }}">
+                        <span>{{ strtoupper($child->nama) }}</span>
+                        <i class="bi bi-chevron-right"></i>
+                      </a>
+                      <ul class="dropdown-menu">
+                        @foreach($child->children as $grandChild)
+                          <li>
+                            <a href="{{ $grandChild->link ?: '#' }}" target="{{ $grandChild->target }}">
+                              @if($grandChild->icon)
+                                <i class="{{ $grandChild->icon }}"></i>
+                              @endif
+                              {{ strtoupper($grandChild->nama) }}
+                            </a>
+                          </li>
+                        @endforeach
+                      </ul>
+                    </li>
+                  @else
+                    <!-- Sub Menu biasa -->
+                    <li>
+                      <a href="{{ $child->link ?: '#' }}" target="{{ $child->target }}">
+                        @if($child->icon)
+                          <i class="{{ $child->icon }}"></i>
+                        @endif
+                        {{ strtoupper($child->nama) }}
+                      </a>
+                    </li>
+                  @endif
+                @endforeach
+              </ul>
+            @else
+              <!-- Menu tanpa Sub Menu -->
+              <a class="nav-link scrollto {{ request()->is(ltrim($menu->link, '/')) ? 'active' : '' }}"
+                 href="{{ $menu->link ?: '#' }}" target="{{ $menu->target }}">
+                @if($menu->icon)
+                  <i class="{{ $menu->icon }}"></i>
+                @endif
+                {{ strtoupper($menu->nama) }}
+              </a>
+            @endif
+          </li>
+        @endforeach
 
         <!-- Search Icon -->
         <li class="d-flex align-items-center">
@@ -204,7 +174,6 @@
 
       <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>
-
   </div>
 </header>
 
@@ -344,106 +313,72 @@
 
     <!-- ======= Informasi Terbaru Section ======= -->
     <section id="informasi-terbaru" class="py-5 bg-light">
-    <div class="container" data-aos="fade-up">
+        <div class="container" data-aos="fade-up">
+            <!-- Judul -->
+            <div class="row mb-4">
+                <div class="col-lg-3">
+                    <h3 class="fw-bold text-dark">Informasi Terbaru</h3>
+                </div>
+            </div>
 
-        <!-- Judul -->
-        <div class="row mb-4">
-        <div class="col-lg-3">
-            <h3 class="fw-bold text-dark">Informasi Terbaru</h3>
-        </div>
-        </div>
+            <div class="row">
+                <!-- Sidebar Kategori -->
+                <div class="col-lg-3 mb-4">
+                    <div class="list-group shadow rounded overflow-hidden">
+                        <a href="{{ route('infoP.berita') }}" class="list-group-item list-group-item-action active" aria-current="true">
+                            <i class="fas fa-newspaper me-2"></i> Berita
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                            <i class="far fa-calendar-alt me-2"></i> Agenda
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action bg-success text-white">
+                            <i class="fas fa-bullhorn me-2"></i> Pengumuman
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+                            <i class="fas fa-book-open me-2"></i> Artikel
+                        </a>
+                    </div>
+                </div>
 
-        <div class="row">
-        <!-- Sidebar Kategori -->
-        <div class="col-lg-3 mb-4">
-            <div class="list-group shadow rounded overflow-hidden">
-            <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
-                <i class="fas fa-newspaper me-2"></i> Berita
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                <i class="far fa-calendar-alt me-2"></i> Agenda
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-success text-white">
-                <i class="fas fa-bullhorn me-2"></i> Pengumuman
-            </a>
-            <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
-                <i class="fas fa-book-open me-2"></i> Artikel
-            </a>
+                <!-- Konten Informasi -->
+                <div class="col-lg-9">
+                    <div class="row g-4">
+                        @forelse ($beritaTerbaru as $berita)
+                        <!-- Kartu Informasi -->
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card h-100 border-0 shadow-sm">
+                                @if ($berita->gambar)
+                                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="card-img-top" alt="{{ $berita->judul }}" style="height: 200px; object-fit: cover;">
+                                @else
+                                    <img src="{{ asset('themes/medicio/assets/img/no-image.png') }}" class="card-img-top" alt="No Image" style="height: 200px; object-fit: cover;">
+                                @endif
+                                <div class="card-body d-flex flex-column">
+                                    <h6 class="card-title flex-grow-1">{{ Str::limit($berita->judul, 60) }}</h6>
+                                    <small class="text-muted">
+                                        <i class="far fa-calendar-alt me-1"></i>
+                                        {{ $berita->created_at->translatedFormat('l, d F Y') }}
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="col-12">
+                            <div class="text-center">
+                                <p class="text-muted">Belum ada berita tersedia</p>
+                            </div>
+                        </div>
+                        @endforelse
+                    </div>
+
+                    <!-- Tombol Lihat Semua Berita -->
+                    <div class="text-center mt-4">
+                        <a href="{{ route('infoP.berita') }}" class="btn btn-primary">
+                            <i class="fas fa-eye me-2"></i>Lihat Semua Berita
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
-
-        <!-- Konten Informasi -->
-        <div class="col-lg-9">
-            <div class="row g-4">
-
-            <!-- Kartu Informasi -->
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                <img src="themes/medicio/assets/img/info1.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">Launching Eduwisata Mini Ranch SapeBre BBPTUHPT Baturaden</h6>
-                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 23 July 2025</small>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                <img src="themes/medicio/assets/img/info2.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">BBPTUHPT Baturaden Jalin Kerjasama Dengan Mitra SPPG Mensukseskan Program MBG</h6>
-                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 16 July 2025</small>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                <img src="themes/medicio/assets/img/info3.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">BBPTUHPT Baturaden Siap Menuju BLU, Komitmen kami untuk melayani sepenuh hati</h6>
-                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Selasa, 15 July 2025</small>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                <img src="themes/medicio/assets/img/info4.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">Kepala BBPTUHPT Baturaden Dampingi Menteri Dalam Acara Rembug Tani Bersama Wapres</h6>
-                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 09 July 2025</small>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                <img src="themes/medicio/assets/img/info5.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">BBPTUHPT dan Kejaksaan Negeri Tandatangani MoU Bidang Hukum dan TUN</h6>
-                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Rabu, 09 July 2025</small>
-                </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 border-0 shadow-sm">
-                <img src="themes/medicio/assets/img/info6.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h6 class="card-title">BBPTUHPT Kirimkan 5 Pengajar untuk Kegiatan Makan Bergizi Gratis (MBG)</h6>
-                    <small class="text-muted"><i class="far fa-calendar-alt me-1"></i> Senin, 30 June 2025</small>
-                </div>
-                </div>
-            </div>
-
-            </div>
-        </div>
-        </div>
-    </div>
-    </section>
-
-
     </section><!-- End Informasi Section -->
 
    <!-- ======= Profil BBPTUHPT Section ======= -->
@@ -523,26 +458,56 @@
 
     <!-- ======= Gallery Section ======= -->
     <section id="gallery" class="gallery">
-    <div class="container" data-aos="fade-up">
-        <div class="section-title">
-        <h2>Gallery</h2>
-        </div>
-
-        <div class="gallery-slider swiper">
-        <div class="swiper-wrapper align-items-center">
-            @foreach($galeris as $galeri)
-            <div class="swiper-slide">
-                <a class="gallery-lightbox" href="{{ asset('storage/' . $galeri->gambar) }}">
-                <img src="{{ asset('storage/' . $galeri->gambar) }}" class="img-fluid" alt="{{ $galeri->judul }}">
-                </a>
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Gallery</h2>
             </div>
-            @endforeach
+
+            <div class="gallery-slider swiper">
+                <div class="swiper-wrapper align-items-center">
+                    @foreach($galeris as $galeri)
+                    <div class="swiper-slide">
+                        <!-- HANYA GUNAKAN ONCLICK CUSTOM MODAL -->
+                        <img src="{{ asset('storage/' . $galeri->gambar) }}"
+                            class="img-fluid"
+                            alt="{{ $galeri->judul }}"
+                            onclick="showImagePopup('{{ asset('storage/' . $galeri->gambar) }}', '{{ $galeri->judul }}')"
+                            style="cursor: pointer;">
+                    </div>
+                    @endforeach
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
         </div>
-        <div class="swiper-pagination"></div>
-        </div>
-    </div>
     </section>
     <!-- End Gallery Section -->
+
+   <!-- Modal Popup untuk Gambar -->
+    <div id="imageModal" class="image-modal" onclick="closeImageModal()">
+        <div class="modal-content-wrapper" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeImageModal()">&times;</span>
+
+            <!-- TOMBOL NAVIGASI PREVIOUS -->
+            <button id="prevBtn" class="nav-btn prev-btn" onclick="showPreviousImage()">❮</button>
+
+            <!-- JUDUL DI ATAS GAMBAR -->
+            <div class="image-title">
+                <h3 id="imageTitle">Judul Gambar</h3>
+            </div>
+
+            <!-- GAMBAR -->
+            <div class="image-container">
+                <img id="modalImg" src="" alt="">
+            </div>
+
+            <!-- COUNTER GAMBAR -->
+            <div id="imageCounter" class="image-counter">1 / 1</div>
+
+            <!-- TOMBOL NAVIGASI NEXT -->
+            <button id="nextBtn" class="nav-btn next-btn" onclick="showNextImage()">❯</button>
+        </div>
+    </div>
+
 
     <!-- ======= Link Terkait Section ======= -->
         <section id="link-terkait" class="link-terkait">

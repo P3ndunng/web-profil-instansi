@@ -134,111 +134,99 @@
     </div>
   </div>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
+  <!-- Header / Navbar -->
+<header id="header" class="d-flex align-items-center">
+  <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <!-- Logo dan Instansi -->
-      <div class="logo d-flex align-items-center" style="padding-left: 20px;">
-        <img src="themes/medicio/assets/img/logo.png" alt="Logo" id="logo-img" style="height: 100px;">
+    <!-- Logo dan Instansi -->
+    <div class="logo d-flex align-items-center" style="padding-left: 20px;">
+      <img src="themes/medicio/assets/img/logo.png" alt="Logo" id="logo-img" style="height: 100px;">
 
-        <!-- Garis Vertikal -->
-        <div class="vertical-line mx-2" id="logo-line" style="height: 60px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
+      <!-- Garis Vertikal -->
+      <div class="vertical-line mx-2" id="logo-line" style="height: 60px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
 
-        <!-- Header Image -->
-        <img src="themes/medicio/assets/img/header.png" alt="Header Text Image" class="ms-2" style="width: 380px; max-height:60px;">
-      </div>
-        <nav id="navbar" class="navbar">
-          <ul>
-            <li><a class="nav-link scrollto active" href="#beranda">BERANDA</a></li>
+      <!-- Header Image -->
+      <img src="themes/medicio/assets/img/header.png" alt="Header Text Image" class="ms-2" style="width: 380px; max-height:60px;">
+    </div>
 
-            <li class="dropdown"><a href="#"><span>PROFIL</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="profil.html">TENTANG BBPTUHPT</a></li>
-                <li><a href="#struktur">STRUKTUR ORGANISASI</a></li>
-                <li><a href="#sejarah">SEJARAH</a></li>
-                <li><a href="#visi">VISI & MISI</a></li>
-                <li><a href="#moto">MOTO DAN JANJI LAYANAN</a></li>
-                <li><a href="#tugas">TUGAS POKOK DAN FUNGSI</a></li>
-                <li><a href="#prestasi">PRESTASI</a></li>
-                <li><a href="#maklumat">MAKLUMAT PELAYANAN</a></li>
-                <li><a href="#sdm">SDM</a></li>
-                <li><a href="#kebijakan">KEBIJAKAN MUTU</a></li>
-                <li><a href="#gallery">GALLERY</a></li>
+    <!-- Navbar Dinamis -->
+    <nav id="navbar" class="navbar">
+      <ul>
+        @php
+          $menus = App\Models\Menu::mainMenus()->with(['children' => function($query) {
+              $query->where('is_active', true)->orderBy('urutan');
+          }])->get();
+        @endphp
+
+        @foreach($menus as $menu)
+          <li class="{{ $menu->hasChildren() ? 'dropdown' : '' }}">
+            @if($menu->hasChildren())
+              <!-- Menu dengan Sub Menu (Dropdown) -->
+              <a href="{{ $menu->link ?: '#' }}" target="{{ $menu->target }}">
+                <span>{{ strtoupper($menu->nama) }}</span>
+                <i class="bi bi-chevron-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                @foreach($menu->children as $child)
+                  @if($child->hasChildren())
+                    <!-- Sub Menu yang juga punya anak -->
+                    <li class="dropdown">
+                      <a href="{{ $child->link ?: '#' }}" target="{{ $child->target }}">
+                        <span>{{ strtoupper($child->nama) }}</span>
+                        <i class="bi bi-chevron-right"></i>
+                      </a>
+                      <ul class="dropdown-menu">
+                        @foreach($child->children as $grandChild)
+                          <li>
+                            <a href="{{ $grandChild->link ?: '#' }}" target="{{ $grandChild->target }}">
+                              @if($grandChild->icon)
+                                <i class="{{ $grandChild->icon }}"></i>
+                              @endif
+                              {{ strtoupper($grandChild->nama) }}
+                            </a>
+                          </li>
+                        @endforeach
+                      </ul>
+                    </li>
+                  @else
+                    <!-- Sub Menu biasa -->
+                    <li>
+                      <a href="{{ $child->link ?: '#' }}" target="{{ $child->target }}">
+                        @if($child->icon)
+                          <i class="{{ $child->icon }}"></i>
+                        @endif
+                        {{ strtoupper($child->nama) }}
+                      </a>
+                    </li>
+                  @endif
+                @endforeach
               </ul>
-            </li>
+            @else
+              <!-- Menu tanpa Sub Menu -->
+              <a class="nav-link scrollto {{ request()->is(ltrim($menu->link, '/')) ? 'active' : '' }}"
+                 href="{{ $menu->link ?: '#' }}" target="{{ $menu->target }}">
+                @if($menu->icon)
+                  <i class="{{ $menu->icon }}"></i>
+                @endif
+                {{ strtoupper($menu->nama) }}
+              </a>
+            @endif
+          </li>
+        @endforeach
 
-            <li class="dropdown"><a href="#"><span>LAYANAN</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="#produk">PRODUK KAMI</a></li>
-                <li><a href="#alur">ALUR PEMBELIAN</a></li>
-                <li class="dropdown"><a href="#"><span>PERMOHONAN LAYANAN ONLINE</span> <i class="bi bi-chevron-right"></i></a>
-                  <ul>
-                    <li><a href="#sub1">PEMBELIAN BIBIT ONLINE</a></li>
-                    <li><a href="#sub2">BIAYA DAN TARIF</a></li>
-                    <li><a href="#sub3">KUNJUNGAN PENELITIAN DAN MAGANG</a></li>
-                  </ul>
-                </li>
-                <li><a href="#kunjungan">KUNJUNGAN, PENELITIAN & PEMAGANGAN</a></li>
-                <li><a href="#bimbingan">BIMBINGAN TEKNIS</a></li>
-                <li><a href="#sewa">LAYANAN SEWA ASET BALAI</a></li>
-                <li><a href="#lab">LABORATORIUM</a></li>
-                <li><a href="#harga">HARGA TERNAK DAN HPT</a></li>
-                <li><a href="#survei">SURVEY KEPUASAN MASYARAKAT</a></li>
-              </ul>
-            </li>
-
-            <li class="dropdown"><a href="#"><span>INFORMASI PUBLIK</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="#berita">BERITA TERKINI</a></li>
-                <li><a href="#artikel">ARTIKEL</a></li>
-                <li><a href="#zona-integritas">PEMBANGUNAN ZONA INTEGRITAS</a></li>
-                <li><a href="#protokol-covid">PROTOKOL KESEHATAN COVID19</a></li>
-                <li class="dropdown"><a href="#"><span>PORTAL PPID</span> <i class="bi bi-chevron-right"></i></a>
-                  <ul>
-                    <li><a href="https://ppid.pertanian.go.id" target="_blank">PPID</a></li>
-                    <li><a href="#informasi-setiap-saat">INFORMASI PUBLIK SETIAP SAAT</a></li>
-                    <li><a href="#informasi-berkala">INFORMASI PUBLIK BERKALA</a></li>
-                    <li><a href="#informasi-serta-merta">INFORMASI PUBLIK SERTA MERTA</a></li>
-                    <li><a href="#tata-cara">TATA CARA PERMOHONAN INFORMASI PUBLIK</a></li>
-                    <li><a href="#hak-informasi">HAK ATAS INFORMASI PUBLIK</a></li>
-                    <li><a href="#mekanisme-keberatan">MEKANISME PENGAJUAN KEBERATAN</a></li>
-                    <li><a href="#sengketa-informasi">PENANGANAN SENGKETA INFORMASI</a></li>
-                  </ul>
-                </li>
-                <li><a href="#laporan-ikm">LAPORAN IKM</a></li>
-                <li><a href="#bibit-sapi-kambing">DISTRIBUSI BIBIT SAPI PERah & KAMBING</a></li>
-                <li><a href="#bibit-hpt">DISTRIBUSI BIBIT HPT</a></li>
-                <li><a href="#pengaduan">PENGADUAN MASYARAKAT</a></li>
-                <li><a href="#regulasi">REGULASI DAN PERATURAN</a></li>
-                <li><a href="#rancangan-kebijakan">DAFTAR RANCANGAN KEBIJAKAN</a></li>
-                <li><a href="#grafik">GRAFIK PERKEMBANGAN</a></li>
-              </ul>
-            </li>
-
-            <li class="dropdown"><a href="#"><span>INOVASI</span> <i class="bi bi-chevron-down"></i></a>
-              <ul>
-                <li><a href="#halo-drh">HALO DRH</a></li>
-                <li><a href="#braden">BRADEN</a></li>
-                <li><a href="#arevy">AREVY SYSTEM</a></li>
-                <li><a href="#ruminansia">RUMINANSIA ONLINE</a></li>
-                <li><a href="#breding">BREEDING ONLINE</a></li>
-                <li><a href="#e-personal">E-PERSONAL</a></li>
-                <li><a href="#e-dupak">E-DUPAK</a></li>
-                <li><a href="#buku">BUKU PINTAR INOVASI</a></li>
-              </ul>
-            </li>
-
-            <li><a class="nav-link scrollto" href="#unduh">UNDUH</a></li>
-            <li><a class="nav-link scrollto" href="#kontak">KONTAK KAMI</a></li>
-          </ul>
-          <div class="vertical-line mx-3"></div>
+        <!-- Search Icon -->
+        <li class="d-flex align-items-center">
+          <!-- Garis Vertikal kiri Search -->
+          <div class="vertical-line me-2" id="search-line" style="height: 30px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
           <a href="#" class="search-icon"><i class="bi bi-search"></i></a>
-          <i class="bi bi-list mobile-nav-toggle"></i>
-        </nav><!-- .navbar -->
+        </li>
+      </ul>
 
-      </div>
-  </header><!-- End Header -->
+      <i class="bi bi-list mobile-nav-toggle"></i>
+    </nav>
+  </div>
+</header>
+
 
   <main id="main" class="main-content">
     <!-- ======= Berita Terbaru Section ======= -->

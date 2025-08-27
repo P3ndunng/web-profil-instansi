@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\InfoController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
@@ -27,11 +28,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 | HALAMAN PUBLIK
 |--------------------------------------------------------------------------
 */
-// Beranda
-Route::get('/', function () {
-    $galeris = Galeri::orderBy('id', 'desc')->get();
-    return view('beranda', compact('galeris'));
-})->name('beranda');
+// Beranda - menggunakan BerandaController
+Route::get('/', [BerandaController::class, 'index'])->name('beranda');
 
 // Profil publik
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');

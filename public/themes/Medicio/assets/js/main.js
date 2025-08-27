@@ -290,11 +290,11 @@ window.addEventListener('scroll', function () {
   });
 
   /**
-   * Initiate gallery lightbox
+   * HAPUS/COMMENT GLightbox - Karena menyebabkan popup double
    */
-  const galleryLightbox = GLightbox({
-    selector: '.gallery-lightbox'
-  });
+  // const galleryLightbox = GLightbox({
+  //   selector: '.gallery-lightbox'
+  // });
 
   /**
    * Animation on scroll
@@ -343,6 +343,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
 document.addEventListener('DOMContentLoaded', function() {
       // Fungsi untuk memuat konten secara dinamis
       function loadContent(url, targetId) {
@@ -386,3 +387,233 @@ document.addEventListener('DOMContentLoaded', function() {
         loadContent(window.location.pathname, 'main');
       });
     });
+
+/* ========================================
+   ENHANCED MODAL POPUP WITH NAVIGATION
+======================================== */
+
+// Gallery navigation variables
+let galleryImages = [];
+let currentImageIndex = 0;
+
+// Initialize gallery images from page
+function initializeGallery() {
+    // Collect all gallery images with their data
+    const galleryElements = document.querySelectorAll('[onclick*="showImagePopup"]');
+    galleryImages = [];
+
+    galleryElements.forEach((element, index) => {
+        const onclickValue = element.getAttribute('onclick');
+        // Extract image source and title from onclick attribute
+        const matches = onclickValue.match(/showImagePopup\('([^']+)',\s*'([^']+)'\)/);
+        if (matches) {
+            galleryImages.push({
+                src: matches[1],
+                title: matches[2],
+                element: element
+            });
+        }
+    });
+
+    console.log('✅ Gallery initialized with', galleryImages.length, 'images');
+}
+
+// Enhanced function to show popup with navigation
+function showImagePopup(imageSrc, imageTitle, elementClicked = null) {
+    // Initialize gallery if not done yet
+    if (galleryImages.length === 0) {
+        initializeGallery();
+    }
+
+    // Find current image index
+    currentImageIndex = galleryImages.findIndex(img => img.src === imageSrc);
+    if (currentImageIndex === -1) {
+        currentImageIndex = 0;
+    }
+
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    const titleElement = document.getElementById('imageTitle');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('imageCounter');
+
+    // Set gambar dan judul
+    modalImg.src = imageSrc;
+    modalImg.alt = imageTitle;
+    titleElement.textContent = imageTitle;
+
+    // Update counter
+    if (counter) {
+        counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+    }
+
+    // Show/hide navigation buttons
+    if (prevBtn && nextBtn) {
+        prevBtn.style.display = galleryImages.length > 1 ? 'block' : 'none';
+        nextBtn.style.display = galleryImages.length > 1 ? 'block' : 'none';
+    }
+
+    // Tampilkan modal
+    modal.style.display = 'block';
+
+    // Prevent body scrolling
+    document.body.style.overflow = 'hidden';
+
+    console.log('✅ Popup opened:', imageTitle, 'Index:', currentImageIndex);
+}
+
+// Navigate to previous image
+function showPreviousImage() {
+    if (galleryImages.length === 0) return;
+
+    currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+    const prevImage = galleryImages[currentImageIndex];
+
+    updateModalContent(prevImage.src, prevImage.title);
+}
+
+// Navigate to next image
+function showNextImage() {
+    if (galleryImages.length === 0) return;
+
+    currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+    const nextImage = galleryImages[currentImageIndex];
+
+    updateModalContent(nextImage.src, nextImage.title);
+}
+
+// Update modal content without closing
+function updateModalContent(imageSrc, imageTitle) {
+    const modalImg = document.getElementById('modalImg');
+    const titleElement = document.getElementById('imageTitle');
+    const counter = document.getElementById('imageCounter');
+
+    // Add loading state
+    modalImg.style.opacity = '0.5';
+
+    // Update image
+    modalImg.onload = function() {
+        modalImg.style.opacity = '1';
+    };
+
+    modalImg.src = imageSrc;
+    modalImg.alt = imageTitle;
+    titleElement.textContent = imageTitle;
+
+    // Update counter
+    if (counter) {
+        counter.textContent = `${currentImageIndex + 1} / ${galleryImages.length}`;
+    }
+
+    console.log('✅ Modal updated:', imageTitle, 'Index:', currentImageIndex);
+}
+
+// Function untuk menutup popup
+function closeImageModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+
+    // Restore body scrolling
+    document.body.style.overflow = 'auto';
+
+    console.log('✅ Popup closed');
+}
+
+// Enhanced keyboard navigation
+document.addEventListener('keydown', function(event) {
+    const modal = document.getElementById('imageModal');
+    if (modal && modal.style.display === 'block') {
+        switch(event.key) {
+            case 'Escape':
+                closeImageModal();
+                break;
+            case 'ArrowLeft':
+                event.preventDefault();
+                showPreviousImage();
+                break;
+            case 'ArrowRight':
+                event.preventDefault();
+                showNextImage();
+                break;
+        }
+    }
+});
+
+// Prevent modal close when clicking on content
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize gallery when page loads
+    setTimeout(() => {
+        initializeGallery();
+    }, 1000);
+
+    const modalWrapper = document.querySelector('.modal-content-wrapper');
+    if (modalWrapper) {
+        modalWrapper.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
+    }
+
+    // Setup navigation button event listeners
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showPreviousImage();
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            showNextImage();
+        });
+    }
+});
+
+// Close modal ketika klik di area hitam (background)
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('imageModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeImageModal();
+            }
+        });
+    }
+});
+
+// Touch/swipe support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    const modalImg = document.getElementById('modalImg');
+    if (modalImg) {
+        modalImg.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        modalImg.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+    }
+});
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > swipeThreshold) {
+        if (swipeDistance > 0) {
+            // Swipe right - show previous
+            showPreviousImage();
+        } else {
+            // Swipe left - show next
+            showNextImage();
+        }
+    }
+}

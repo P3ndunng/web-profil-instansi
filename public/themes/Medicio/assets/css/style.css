@@ -1073,33 +1073,148 @@ section {
 /*--------------------------------------------------------------
 # iinformasi
 --------------------------------------------------------------*/
-  #informasi-terbaru .list-group-item.active {
-    background-color: #2F451E;
-    border-color: #2F451E;
+  #informasi-terbaru .list-group {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Base styling untuk semua menu items */
+#informasi-terbaru .list-group-item {
+  background-color: #2F451E;
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon spacing */
+#informasi-terbaru .list-group-item i {
+  width: 20px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+/* Hover effect untuk semua menu */
+#informasi-terbaru .list-group-item:hover {
+  background-color: #3a5729 !important;
+  color: white !important;
+  transform: translateX(5px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Active state (menu yang sedang aktif) */
+#informasi-terbaru .list-group-item.active {
+  background-color: #1a2e0f !important;
+  color: white !important;
+  border-left: 4px solid #00a859;
+  font-weight: 600;
+}
+
+/* Hover pada active item */
+#informasi-terbaru .list-group-item.active:hover {
+  background-color: #243518 !important;
+  color: white !important;
+}
+
+/* Efek glow saat hover */
+#informasi-terbaru .list-group-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+#informasi-terbaru .list-group-item:hover::before {
+  left: 100%;
+}
+
+/* Card styling */
+#informasi-terbaru .card {
+  border: none;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#informasi-terbaru .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+#informasi-terbaru .card-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  line-height: 1.4;
+  color: #2F451E;
+}
+
+#informasi-terbaru .card img {
+  height: 180px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+#informasi-terbaru .card:hover img {
+  transform: scale(1.05);
+}
+
+/* Small text styling */
+#informasi-terbaru small {
+  font-size: 12px;
+  color: #666;
+}
+
+#informasi-terbaru small i {
+  margin-right: 5px;
+  color: #00a859;
+}
+
+/* Button styling */
+#informasi-terbaru .btn-primary {
+  background-color: #2F451E;
+  border-color: #2F451E;
+  padding: 12px 30px;
+  font-weight: 500;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+}
+
+#informasi-terbaru .btn-primary:hover {
+  background-color: #1a2e0f;
+  border-color: #1a2e0f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(47, 69, 30, 0.3);
+}
+
+#informasi-terbaru .btn-primary i {
+  margin-right: 8px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  #informasi-terbaru .list-group-item {
+    padding: 12px 15px;
+    font-size: 14px;
   }
 
-  #informasi-terbaru .list-group-item.bg-success {
-    background-color: #00a859 !important;
-    color: white !important;
-  }
-
-  #informasi-terbaru .list-group-item.bg-dark {
-    background-color: #2F451E !important;
-    color: white !important;
+  #informasi-terbaru .list-group-item:hover {
+    transform: none;
   }
 
   #informasi-terbaru .card-title {
-    font-size: 14px;
-    font-weight: 600;
-    margin-bottom: 6px;
+    font-size: 13px;
   }
-
-  #informasi-terbaru .card img {
-    height: 180px;
-    object-fit: cover;
-  }
-
-
+}
 /*--------------------------------------------------------------
 # profil
 --------------------------------------------------------------*/
@@ -1626,3 +1741,300 @@ section {
         padding-top: 120px; /* Lebih kecil untuk tampilan mobile */
       }
     }
+
+
+    /* ========================================
+   ENHANCED GALLERY MODAL WITH NAVIGATION
+======================================== */
+
+/* Modal Background */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    animation: fadeIn 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Modal Content Container */
+.modal-content-wrapper {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 700px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10000;
+    transition: color 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff6b6b;
+}
+
+/* NAVIGATION BUTTONS */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: none;
+    font-size: 28px;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    z-index: 10001;
+    transition: all 0.3s ease;
+    user-select: none;
+    font-weight: bold;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.prev-btn {
+    left: -60px;
+}
+
+.next-btn {
+    right: -60px;
+}
+
+.nav-btn:hover {
+    background: rgba(47, 69, 30, 0.9);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-btn:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* IMAGE COUNTER */
+.image-counter {
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    letter-spacing: 0.5px;
+}
+
+/* STYLE UNTUK JUDUL */
+.image-title {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.image-title h3 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.5px;
+}
+
+/* Image Container */
+.image-container {
+    position: relative;
+}
+
+/* Modal Image */
+#modalImg {
+    width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    transition: opacity 0.3s ease;
+}
+
+/* Gallery hover effect */
+.gallery-lightbox {
+    display: block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-lightbox:hover {
+    transform: scale(1.05);
+}
+
+.gallery-lightbox img {
+    transition: filter 0.3s ease;
+}
+
+.gallery-lightbox:hover img {
+    filter: brightness(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .modal-content-wrapper {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .image-title h3 {
+        font-size: 20px;
+    }
+
+    .image-title {
+        padding: 12px 15px;
+        margin-bottom: 15px;
+    }
+
+    .close-btn {
+        font-size: 28px;
+        top: -35px;
+    }
+
+    #modalImg {
+        max-height: 60vh;
+    }
+
+    /* Mobile Navigation Buttons */
+    .nav-btn {
+        font-size: 24px;
+        padding: 12px 15px;
+        border-radius: 6px;
+    }
+
+    .prev-btn {
+        left: -45px;
+    }
+
+    .next-btn {
+        right: -45px;
+    }
+
+    .image-counter {
+        bottom: -30px;
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Move navigation buttons inside modal on very small screens */
+    .prev-btn {
+        left: 10px;
+    }
+
+    .next-btn {
+        right: 10px;
+    }
+
+    .nav-btn {
+        font-size: 20px;
+        padding: 10px 12px;
+        background: rgba(0, 0, 0, 0.8);
+    }
+}
+
+@media (max-width: 480px) {
+    .image-title h3 {
+        font-size: 18px;
+    }
+
+    .image-title {
+        padding: 10px 12px;
+    }
+
+    .modal-content-wrapper {
+        padding: 5px;
+    }
+
+    .nav-btn {
+        font-size: 18px;
+        padding: 8px 10px;
+    }
+
+    .prev-btn {
+        left: 5px;
+    }
+
+    .next-btn {
+        right: 5px;
+    }
+
+    .image-counter {
+        bottom: -25px;
+        font-size: 11px;
+        padding: 5px 10px;
+    }
+}
+
+/* Loading state for smooth transitions */
+#modalImg.loading {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+/* Keyboard navigation indicator (optional) */
+.nav-btn::after {
+    content: '';
+    position: absolute;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.6);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.prev-btn::after {
+    content: '← Arrow Key';
+}
+
+.next-btn::after {
+    content: 'Arrow Key →';
+}
+
+.nav-btn:hover::after {
+    opacity: 1;
+}
+
+@media (max-width: 768px) {
+    .nav-btn::after {
+        display: none;
+    }
+}

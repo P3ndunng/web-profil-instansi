@@ -2,22 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Galeri;
+use App\Models\Slider;
 use App\Models\Info;
+use App\Models\Galeri; // <-- tambahkan ini
+use Illuminate\Http\Request;
 
 class BerandaController extends Controller
 {
     public function index()
     {
-        // Data galeri yang sudah ada
-        $galeris = Galeri::orderBy('id', 'desc')->get();
+        // Ambil semua slider
+        $sliders = Slider::all();
 
-        // Ambil 6 berita terbaru untuk ditampilkan di beranda
-        $beritaTerbaru = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Berita'))
+        // Ambil 6 berita terbaru
+        $beritaTerbaru = Info::where('kategori_id', 1)
             ->latest()
             ->take(6)
             ->get();
 
-        return view('beranda', compact('galeris', 'beritaTerbaru'));
+        // Ambil 6 galeri terbaru
+        $galeris = Galeri::latest()->take(6)->get();
+
+        return view('beranda', compact('sliders', 'beritaTerbaru', 'galeris'));
     }
 }

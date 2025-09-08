@@ -134,7 +134,7 @@
     </div>
   </div>
 
-  <!-- Header / Navbar -->
+<!-- Header / Navbar -->
 <header id="header" class="d-flex align-items-center">
   <div class="container-fluid d-flex align-items-center justify-content-between">
 
@@ -261,98 +261,91 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+    <footer id="footer">
     <div class="footer-top">
-      <div class="container">
+        <div class="container">
         <div class="row">
 
-          <div class="col-lg-4 col-md-6 footer-contact">
+            <!-- Kolom 1: Kantor BBPTUHPT -->
+            <div class="col-lg-4 col-md-6 footer-info">
             <h3>Kantor BBPTUHPT</h3>
             <p>
-              Jl. Raya Baturraden, Ds Kemutug Lor Kec. Baturraden, Kab. Banyumas Jawa Tengah 53151<br><br>
-              <strong>Telepon:</strong> (0281) 681716<br>
-              <strong>Fax:</strong> (0281) 681037<br>
-              <strong>Email:</strong> bbpubptibaturraden@gmail.com<br>
-              <strong>Website:</strong> https://bbptusapiperah.ditjenpkh.pertanian.go.id<br>
+                <a href="https://maps.google.com" target="_blank" class="alamat-link">
+                Jl. Raya Baturraden, Ds Kemutug Lor Kec. Baturraden, Kab. Banyumas Jawa Tengah 53151
+                </a><br><br>
+                <strong>Telepon:</strong> (0281) 681716<br>
+                <strong>Surel:</strong> bbptuhpt_btraden@pertanian.go.id<br>
+                bbptuhptbaturraden@gmail.com<br><br>
+                <strong>Website:</strong><br>
+                <a href="https://bbptusapiperah.ditjenpkh.pertanian.go.id" target="_blank" class="alamat-link">
+                https://bbptusapiperah.ditjenpkh.pertanian.go.id
+                </a>
             </p>
-          </div>
+            <div class="social-links mt-3">
+                <a href="#"><i class="bi bi-whatsapp"></i></a>
+                <a href="#"><i class="bi bi-instagram"></i></a>
+                <a href="#"><i class="bi bi-youtube"></i></a>
+            </div>
+            </div>
 
-          <div class="col-lg-4 col-md-6 footer-links">
+            <!-- Kolom 2: Kontak Penting -->
+            <div class="col-lg-4 col-md-6 kontak-penting">
             <h3>Kontak Penting</h3>
-            <div class="contact-box">
-              <i class="bi bi-whatsapp"></i>
-              <div>
-                <p>Layanan Informasi Publik, Kunjungan, Magang, PKL & Pengaduan</p>
-                <strong>085504411118 (Tri Juliyanta, SH, MH)</strong>
-              </div>
-            </div>
-            <div class="contact-box">
-              <i class="bi bi-whatsapp"></i>
-              <div>
-                <p>Layanan Pemasaran dan Informasi Bibit</p>
-                <strong>085505111118 (Hery Supriadi, S.Pt., M.Pt)</strong>
-              </div>
-            </div>
-            <div class="contact-box">
-              <h4>Posko Nasional Tanggap Daruret</h4>
-              <p>Penanganan, Pelaporan, dan Koordinasi PMK Nasional</p>
-              <strong>0812-8634-5622, 0812-8634-5633</strong>
-            </div>
-          </div>
 
-          <div class="col-lg-4 col-md-6 footer-info">
+            <div class="wa-box">
+                <i class="bi bi-whatsapp"></i>
+                <span>Layanan Informasi Publik, Kunjungan, Magang, PKL & Pengaduan<br>
+                <strong>089504411118</strong> (Tri Juliyanta, SH, MH)
+                </span>
+            </div>
+
+            <div class="wa-box">
+                <i class="bi bi-whatsapp"></i>
+                <span>Layanan Pemasaran dan Informasi Bibit<br>
+                <strong>089505111118</strong> (Hery Supriadi, S.Pt., M.Pt)
+                </span>
+            </div>
+
+            <p class="posko-title">Posko Nasional Tanggap Darurat</p>
+            <p class="posko-desc">Penanganan, Pelaporan, dan Koordinasi PMK Nasional<br>
+                0812-8634-5622, 0812-8634-5633
+            </p>
+            </div>
+
+            <!-- Kolom 3: Lain-lain -->
+            <div class="col-lg-4 col-md-12 lain-lain">
             <h3>Lain-lain</h3>
-            <div class="service-hours">
-              <h4><i class="bi bi-clock"></i> Jam Pelayanan</h4>
-              <p>Senin s.d Kamis 08.00 s.d 15.00 WIB</p>
-              <p>Jum'at 08.00 s.d 15.30 WIB</p>
+
+            <div class="jam-pelayanan">
+                <p><i class="bi bi-clock"></i> Jam Pelayanan</p>
+                <span>Senin s.d Kamis &nbsp; 08.00 s.d 15.00 WIB</span><br>
+                <span>Jum’at &nbsp; 08.00 s.d 15.30 WIB</span>
             </div>
 
-            <div class="certification">
-              <h4>Sistem Manajemen Mutu</h4>
-              <div class="row">
-                <div class="col-6">
-                  <img src="themes/medicio/assets/img/iso-9001.png" alt="ISO 9001:2015" class="img-fluid">
-                </div>
-                <div class="col-6">
-                  <img src="themes/medicio/assets/img/iso-37001.png" alt="ISO 37001:2016" class="img-fluid">
-                </div>
-              </div>
+            <div class="sertifikasi">
+                <img src="themes/medicio/assets/img/SNI-9001.jpg" alt="SNI ISO 9001">
+                <img src="themes/medicio/assets/img/SNI-37001.jpg" alt="SNI ISO 37001">
             </div>
 
-            <div class="visitor-stats mt-3">
-              <h4>Statistik Pengunjung:</h4>
-              <table class="table table-sm table-borderless">
-                <tr>
-                  <td>21,279</td>
-                  <td>55</td>
-                </tr>
-                <tr>
-                  <td>1,649</td>
-                  <td>49</td>
-                </tr>
-                <tr>
-                  <td>20</td>
-                  <td>33</td>
-                </tr>
-                <tr>
-                  <td>40</td>
-                  <td>34</td>
-                </tr>
-              </table>
+            <div class="statistik">
+                <p>Statistik Pengunjung:</p>
+                <img src="themes/medicio/assets/img/statistik.png" alt="Statistik">
             </div>
-          </div>
+            </div>
 
         </div>
-      </div>
+        </div>
     </div>
 
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>BBPTUHPT Baturraden</span></strong>. All Rights Reserved
-      </div>
+    <div class="footer-bottom">
+        <div class="container">
+        <div class="copyright">
+            &copy; <strong><span>BBPTUHPT Baturraden</span></strong>. All Rights Reserved
+        </div>
+        </div>
     </div>
-  </footer><!-- End Footer -->
+    </footer>
+    <!-- End Footer -->
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

@@ -11,8 +11,9 @@ use App\Http\Controllers\KontakController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\ProfilController;
-use App\Models\Galeri;
 use App\Http\Controllers\CkeditorUploadController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\SliderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,42 +29,31 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 | HALAMAN PUBLIK
 |--------------------------------------------------------------------------
 */
-// Beranda - menggunakan BerandaController
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
-
-// Profil publik
+Route::get('/search', [SearchController::class, 'search'])->name('search');
 Route::get('/profil', [ProfilController::class, 'index'])->name('profil');
-
-// BERITA PUBLIK
 Route::get('/berita', [InfoController::class, 'beritaPublik'])->name('infoP.berita');
-// Bisa ditambahkan artikel/pengumuman/agenda publik jika perlu
 
 /*
 |--------------------------------------------------------------------------
 | ADMIN AREA
 |--------------------------------------------------------------------------
-| Semua route admin menggunakan prefix 'admin' dan nama route 'admin.*'
 */
 Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
 
-    // Dashboard
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
 
-    // Resource controller lain
     Route::resource('users', UserController::class);
     Route::resource('kategoris', KategoriController::class);
     Route::resource('menu', MenuController::class);
     Route::resource('kontak', KontakController::class);
-    Route::resource('media', MediaController::class)->parameters([
-    'media' => 'media']);
+    Route::resource('media', MediaController::class)->parameters(['media' => 'media']);
     Route::resource('galeri', GaleriController::class);
 
     // ===== MANAGEMEN INFORMASI =====
-    Route::get('/manajemen-informasi', function () {
-        return view('infos.index');
-    })->name('manajemen.index');
+    Route::get('/manajemen-informasi', fn() => view('infos.index'))->name('manajemen.index');
 
     // Berita
     Route::get('/berita', [InfoController::class, 'indexBerita'])->name('berita.index');
@@ -96,6 +86,9 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/agenda/{id}/edit', [InfoController::class, 'editAgenda'])->name('agenda.edit');
     Route::put('/agenda/{id}', [InfoController::class, 'updateAgenda'])->name('agenda.update');
     Route::delete('/agenda/{id}', [InfoController::class, 'destroyAgenda'])->name('agenda.destroy');
+
+    // Slider
+    Route::resource('sliders', SliderController::class);
 });
 
-Route::post('/ckeditor/upload', [CkeditorUploadController::class, 'upload'])->name('ckeditor.upload');
+// Route::post('/ckeditor/upload', [CkeditorUploadController::class, 'upload'])->name('ckeditor.upload');

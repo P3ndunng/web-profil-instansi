@@ -294,7 +294,7 @@
                             data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <img class="rounded-circle header-profile-user" src="/themes/minia/minia/assets//images/users/avatar-1.jpg"
                                     alt="Header Avatar">
-                                <span class="d-none d-xl-inline-block ms-1 fw-medium">Shawn L.</span>
+                                <span class="d-none d-xl-inline-block ms-1 fw-medium">{{ Auth::user()->username ?? Auth::user()->name ?? 'User' }}</span>
                                 <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                             </button>
                             <div class="dropdown-menu dropdown-menu-end">
@@ -302,7 +302,16 @@
                                 <a class="dropdown-item" href="apps-contacts-profile.html"><i class="mdi mdi mdi-face-man font-size-16 align-middle me-1"></i> Profile</a>
                                 <a class="dropdown-item" href="auth-lock-screen.html"><i class="mdi mdi-lock font-size-16 align-middle me-1"></i> Lock Screen</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="auth-logout.html"><i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout</a>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <i class="mdi mdi-logout font-size-16 align-middle me-1"></i> Logout
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+
+
                             </div>
                         </div>
 
@@ -325,6 +334,13 @@
                         </li>
 
                         <li>
+                            <a href="{{ route('admin.sliders.index') }}">
+                                <i data-feather="sidebar"></i>
+                                <span data-key="t-authentication">Manajemen Slider</span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{ route('admin.users.index') }}">
                                 <i data-feather="users"></i>
                                 <span data-key="t-authentication">Manajemen Pengguna</span>
@@ -332,18 +348,49 @@
                         </li>
 
                         <!-- ===== MANAGEMEN INFORMASI ===== -->
-                        <li>
-                            <a href="javascript: void(0);" class="has-arrow">
+                        <li class="{{ request()->routeIs('admin.berita.*') 
+                                    || request()->routeIs('admin.pengumuman.*') 
+                                    || request()->routeIs('admin.artikel.*') 
+                                    || request()->routeIs('admin.agenda.*') 
+                                    ? 'mm-active' : '' }}">
+                            <a href="javascript: void(0);" 
+                            class="has-arrow {{ request()->routeIs('admin.berita.*') 
+                                                || request()->routeIs('admin.pengumuman.*') 
+                                                || request()->routeIs('admin.artikel.*') 
+                                                || request()->routeIs('admin.agenda.*') 
+                                                ? 'mm-active' : '' }}">
                                 <i data-feather="file-text"></i>
                                 <span data-key="t-pages">Manajemen Informasi</span>
                             </a>
                             <ul class="sub-menu" aria-expanded="false">
-                                <li><a href="{{ route('admin.berita.index') }}">Berita</a></li>
-                                <li><a href="{{ route('admin.pengumuman.index') }}">Pengumuman</a></li>
-                                <li><a href="{{ route('admin.artikel.index') }}">Artikel</a></li>
-                                <li><a href="{{ route('admin.agenda.index') }}">Agenda</a></li>
+                                <li>
+                                    <a href="{{ route('admin.berita.index') }}" 
+                                    class="{{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
+                                        Berita
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.pengumuman.index') }}" 
+                                    class="{{ request()->routeIs('admin.pengumuman.*') ? 'active' : '' }}">
+                                        Pengumuman
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.artikel.index') }}" 
+                                    class="{{ request()->routeIs('admin.artikel.*') ? 'active' : '' }}">
+                                        Artikel
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('admin.agenda.index') }}" 
+                                    class="{{ request()->routeIs('admin.agenda.*') ? 'active' : '' }}">
+                                        Agenda
+                                    </a>
+                                </li>
                             </ul>
                         </li>
+
+
 
                         <li>
                             <a href="{{ route('admin.kategoris.index') }}">

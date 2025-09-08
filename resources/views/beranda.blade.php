@@ -53,7 +53,6 @@
 
 <body>
 
-  <!-- ======= Top Bar ======= -->
 <!-- ======= Top Bar ======= -->
 <div id="topbar" class="d-flex align-items-center">
   <div class="container d-flex justify-content-start">
@@ -166,9 +165,11 @@
 
         <!-- Search Icon -->
         <li class="d-flex align-items-center">
-          <!-- Garis Vertikal kiri Search -->
-          <div class="vertical-line me-2" id="search-line" style="height: 30px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
-          <a href="#" class="search-icon"><i class="bi bi-search"></i></a>
+        <!-- Garis Vertikal kiri Search -->
+        <div class="vertical-line me-2" id="search-line" style="height: 30px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
+        <a href="#" class="search-icon" onclick="openSearchModal()" style="text-decoration: none;">
+            <i class="bi bi-search"></i>
+        </a>
         </li>
       </ul>
 
@@ -177,24 +178,111 @@
   </div>
 </header>
 
-
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero">
-    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
-
-      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-      <div class="carousel-inner" role="listbox">
-
-        <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url(themes/medicio/assets/img/slide/slide-1.jpg)">
+  <!-- ======= Search Box ======= -->
+    <div class="search-modal" id="searchModal">
+    <div class="search-container">
+        <button class="close-search" onclick="closeSearchModal()">&times;</button>
+        
+        <div class="search-header">
+            <h3>Pencarian</h3>
+            <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">Cari informasi, artikel, layanan, atau konten lainnya</p>
         </div>
 
-      </div>
+        <div class="search-input-group">
+            <input type="text" 
+                   class="search-input" 
+                   id="searchInput" 
+                   placeholder="Ketik kata kunci pencarian..."
+                   autocomplete="off">
+            <button class="search-btn" onclick="performSearch()">
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
 
+        <!-- Search Suggestions -->
+        <div class="search-suggestions" id="searchSuggestions">
+            <h5 style="color: #2F451E; font-size: 14px; font-weight: 600; margin-bottom: 15px; text-transform: uppercase;">Pencarian Populer</h5>
+            <div class="suggestion-item" onclick="searchFor('profil instansi')">
+                <i class="bi bi-building"></i>
+                <span>Profil Instansi</span>
+            </div>
+            <div class="suggestion-item" onclick="searchFor('layanan publik')">
+                <i class="bi bi-gear"></i>
+                <span>Layanan Publik</span>
+            </div>
+            <div class="suggestion-item" onclick="searchFor('berita terbaru')">
+                <i class="bi bi-newspaper"></i>
+                <span>Berita Terbaru</span>
+            </div>
+            <div class="suggestion-item" onclick="searchFor('kontak')">
+                <i class="bi bi-telephone"></i>
+                <span>Informasi Kontak</span>
+            </div>
+        </div>
+
+        <!-- Search Results -->
+        <div class="search-results" id="searchResults">
+            <!-- Results will be populated here -->
+        </div>
+
+        <!-- No Results -->
+        <div style="display: none; text-align: center; padding: 40px; color: #666;" id="noResults">
+            <i class="bi bi-search" style="font-size: 48px; color: #ddd; margin-bottom: 15px;"></i>
+            <h5>Tidak ada hasil ditemukan</h5>
+            <p>Coba gunakan kata kunci yang berbeda</p>
+        </div>
     </div>
-  </section><!-- End Hero -->
+</div>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero">
+        <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators" id="hero-carousel-indicators">
+                @foreach($sliders as $index => $slider)
+                    <li data-bs-target="#heroCarousel" data-bs-slide-to="{{ $index }}" class="{{ $index == 0 ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+
+            <!-- Slides -->
+            <div class="carousel-inner" role="listbox">
+                @forelse($sliders as $index => $slider)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}" 
+                        style="background-image: url('{{ asset('storage/' . $slider->gambar) }}')">
+                        <div class="carousel-container text-center">
+                            @if($slider->judul)
+                                <h2 class="animate__animated animate__fadeInDown">{{ $slider->judul }}</h2>
+                            @endif
+                            @if($slider->deskripsi)
+                                <p class="animate__animated animate__fadeInUp">{{ $slider->deskripsi }}</p>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <!-- Fallback jika belum ada slider -->
+                    <div class="carousel-item active" style="background-image: url('assets/img/slide/slide-1.jpg')">
+                        <div class="carousel-container text-center">
+                            <h2>Selamat Datang</h2>
+                            <p>Tambahkan slider melalui dashboard admin.</p>
+                        </div>
+                    </div>
+                @endforelse
+            </div>
+
+            <!-- Controls -->
+            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+            </a>
+            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+            </a>
+
+        </div>
+    </section><!-- End Hero -->
+
+
+
 
   <main id="main">
 
@@ -341,34 +429,33 @@
                 </div>
 
                 <!-- Konten Informasi -->
-                <div class="col-lg-9">
-                    <div class="row g-4">
-                        @forelse ($beritaTerbaru as $berita)
-                        <!-- Kartu Informasi -->
-                        <div class="col-md-6 col-lg-4">
-                            <div class="card h-100 border-0 shadow-sm">
-                                @if ($berita->gambar)
-                                    <img src="{{ asset('storage/' . $berita->gambar) }}" class="card-img-top" alt="{{ $berita->judul }}" style="height: 200px; object-fit: cover;">
-                                @else
-                                    <img src="{{ asset('themes/medicio/assets/img/no-image.png') }}" class="card-img-top" alt="No Image" style="height: 200px; object-fit: cover;">
-                                @endif
-                                <div class="card-body d-flex flex-column">
-                                    <h6 class="card-title flex-grow-1">{{ Str::limit($berita->judul, 60) }}</h6>
-                                    <small class="text-muted">
+                    <!-- Berita Terbaru -->
+                        <div class="col-lg-9 mt-5">
+                            <div class="row g-4">
+                                @forelse ($beritaTerbaru as $berita)
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                    @if ($berita->gambar)
+                                        <img src="{{ asset('storage/' . $berita->gambar) }}" class="card-img-top" alt="{{ $berita->judul }}" style="height: 200px; object-fit: cover;">
+                                    @else
+                                        <img src="{{ asset('themes/medicio/assets/img/no-image.png') }}" class="card-img-top" alt="No Image" style="height: 200px; object-fit: cover;">
+                                    @endif
+                                    <div class="card-body d-flex flex-column">
+                                        <h6 class="card-title flex-grow-1">{{ Str::limit($berita->judul, 60) }}</h6>
+                                        <small class="text-muted">
                                         <i class="far fa-calendar-alt me-1"></i>
                                         {{ $berita->created_at->translatedFormat('l, d F Y') }}
-                                    </small>
+                                        </small>
+                                    </div>
+                                    </div>
                                 </div>
+                                @empty
+                                <div class="col-12 text-center">
+                                    <p class="text-muted">Belum ada berita tersedia</p>
+                                </div>
+                                @endforelse
                             </div>
                         </div>
-                        @empty
-                        <div class="col-12">
-                            <div class="text-center">
-                                <p class="text-muted">Belum ada berita tersedia</p>
-                            </div>
-                        </div>
-                        @endforelse
-                    </div>
 
                     <!-- Tombol Lihat Semua Berita -->
                     <div class="text-center mt-4">

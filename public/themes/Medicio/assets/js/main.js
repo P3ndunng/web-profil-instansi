@@ -623,7 +623,7 @@ function openSearchModal() {
     if (searchModal) {
         searchModal.style.display = 'flex';
         searchModal.classList.add('active');
-        
+
         // Focus ke input search
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
@@ -631,10 +631,10 @@ function openSearchModal() {
                 searchInput.focus();
             }, 100);
         }
-        
+
         // Prevent body scrolling
         document.body.style.overflow = 'hidden';
-        
+
         console.log('✅ Search modal opened');
     }
 }
@@ -647,25 +647,25 @@ function closeSearchModal() {
         setTimeout(() => {
             searchModal.style.display = 'none';
         }, 300);
-        
+
         // Clear input
         const searchInput = document.getElementById('searchInput');
         if (searchInput) {
             searchInput.value = '';
         }
-        
+
         // Hide results
         const searchResults = document.getElementById('searchResults');
         const searchSuggestions = document.getElementById('searchSuggestions');
         const noResults = document.getElementById('noResults');
-        
+
         if (searchResults) searchResults.classList.remove('active');
         if (searchSuggestions) searchSuggestions.style.display = 'block';
         if (noResults) noResults.style.display = 'none';
-        
+
         // Restore body scrolling
         document.body.style.overflow = 'auto';
-        
+
         console.log('✅ Search modal closed');
     }
 }
@@ -674,26 +674,26 @@ function closeSearchModal() {
 function performSearch() {
     const searchInput = document.getElementById('searchInput');
     const query = searchInput ? searchInput.value.trim() : '';
-    
+
     if (query.length < 2) {
         alert('Masukkan minimal 2 karakter untuk pencarian');
         return;
     }
-    
+
     console.log('🔍 Searching for:', query);
-    
+
     // Show loading state
     const searchResults = document.getElementById('searchResults');
     const searchSuggestions = document.getElementById('searchSuggestions');
     const noResults = document.getElementById('noResults');
-    
+
     if (searchResults) {
         searchResults.innerHTML = '<div style="text-align: center; padding: 20px;">Mencari...</div>';
         searchResults.classList.add('active');
     }
     if (searchSuggestions) searchSuggestions.style.display = 'none';
     if (noResults) noResults.style.display = 'none';
-    
+
     // Lakukan AJAX request ke backend
     fetch(`/search?q=${encodeURIComponent(query)}`, {
         method: 'GET',
@@ -718,12 +718,12 @@ function performSearch() {
 function displaySearchResults(data) {
     const searchResults = document.getElementById('searchResults');
     const noResults = document.getElementById('noResults');
-    
+
     if (!searchResults) return;
-    
+
     if (data.results && data.results.length > 0) {
         let html = '<h5 style="color: #2F451E; margin-bottom: 15px;">Hasil Pencarian</h5>';
-        
+
         data.results.forEach(result => {
             html += `
                 <div class="result-item" onclick="window.open('${result.url}', '${result.url.startsWith('http') ? '_blank' : '_self'}')">
@@ -733,10 +733,10 @@ function displaySearchResults(data) {
                 </div>
             `;
         });
-        
+
         searchResults.innerHTML = html;
         searchResults.classList.add('active');
-        
+
         if (noResults) noResults.style.display = 'none';
     } else {
         searchResults.classList.remove('active');
@@ -756,7 +756,7 @@ function searchFor(query) {
 // Enhanced DOMContentLoaded untuk Search
 document.addEventListener('DOMContentLoaded', function() {
     console.log('🚀 Search functionality initialized');
-    
+
     // Event listener untuk input search (Enter key)
     const searchInput = document.getElementById('searchInput');
     if (searchInput) {
@@ -766,13 +766,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 performSearch();
             }
         });
-        
+
         // Event listener untuk real-time search (opsional)
         let searchTimeout;
         searchInput.addEventListener('input', function() {
             clearTimeout(searchTimeout);
             const query = this.value.trim();
-            
+
             if (query.length >= 2) {
                 searchTimeout = setTimeout(() => {
                     performSearch();
@@ -782,14 +782,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const searchResults = document.getElementById('searchResults');
                 const searchSuggestions = document.getElementById('searchSuggestions');
                 const noResults = document.getElementById('noResults');
-                
+
                 if (searchResults) searchResults.classList.remove('active');
                 if (searchSuggestions) searchSuggestions.style.display = 'block';
                 if (noResults) noResults.style.display = 'none';
             }
         });
     }
-    
+
     // Event listener untuk close modal ketika klik background
     const searchModal = document.getElementById('searchModal');
     if (searchModal) {
@@ -799,7 +799,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+
     // Event listener untuk ESC key (enhanced untuk handle search modal)
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
@@ -808,12 +808,35 @@ document.addEventListener('DOMContentLoaded', function() {
                 closeSearchModal();
                 return;
             }
-            
+
             // Existing image modal ESC handling
             const imageModal = document.getElementById('imageModal');
             if (imageModal && imageModal.style.display === 'block') {
                 closeImageModal();
             }
         }
+    });
+});
+
+// info terbaru di beranda
+document.addEventListener("DOMContentLoaded", function() {
+    const links = document.querySelectorAll("#kategori-tab a");
+    const tabs = document.querySelectorAll(".tab-content");
+
+    links.forEach(link => {
+        link.addEventListener("click", function(e) {
+            e.preventDefault();
+
+            // reset active sidebar
+            links.forEach(l => l.classList.remove("active"));
+
+            // sembunyikan semua tab
+            tabs.forEach(tab => tab.classList.add("d-none"));
+
+            // aktifkan link yg diklik
+            this.classList.add("active");
+            const target = this.getAttribute("data-target");
+            document.querySelector("#tab-" + target).classList.remove("d-none");
+        });
     });
 });

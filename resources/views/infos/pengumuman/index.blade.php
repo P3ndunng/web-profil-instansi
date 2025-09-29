@@ -1,72 +1,106 @@
 @extends('layouts.app')
 
-@section('title', 'Manajemen Pengumuman')
+@section('title', 'Daftar Pengumuman')
 
 @section('content')
 <div class="container mt-4">
-    <h3 class="mb-4">Manajemen Pengumuman</h3>
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Daftar Pengumuman</h5>
+                    <a href="{{ route('admin.pengumuman.create') }}" class="btn btn-primary btn-sm">
+                        <i data-feather="plus" class="icon-xs"></i> Tambah Pengumuman
+                    </a>
+                </div>
 
-    @if (session('success'))
-        <div class="alert alert-success">{{ session('success') }}</div>
-    @endif
-
-    <!-- Tombol Tambah Hanya Icon & Hijau -->
-    <a href="{{ route('admin.pengumuman.create') }}" class="btn btn-success btn-icon mb-3" title="Tambah Pengumuman"
-       style="padding: 0.375rem; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center;">
-        <i data-feather="plus-circle"></i>
-    </a>
-
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped table-hover">
-            <thead class="table-dark">
-                <tr>
-                    <th style="width: 50px;">No</th>
-                    <th>Judul Pengumuman</th>
-                    <th>Isi</th>
-                    <th>Tanggal</th>
-                    <th style="width: 120px;">Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse ($items as $item)
-                <tr>
-                    <td>{{ $loop->iteration }}</td>
-                    <td>{{ $item->judul }}</td>
-                    <td>{{ Str::limit(strip_tags($item->isi), 100) }}</td>
-                    <td>{{ $item->tanggal ?? '-' }}</td>
-                    <td class="text-center">
-                        <div class="d-flex justify-content-center gap-1">
-                            <!-- Tombol Edit Hanya Icon & Kuning -->
-                            <a href="{{ route('admin.pengumuman.edit', $item->id) }}" class="btn btn-warning btn-sm btn-icon" title="Edit"
-                               style="padding: 0.25rem; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
-                                <i data-feather="edit"></i>
-                            </a>
-
-                            <!-- Tombol Hapus Hanya Icon & Merah -->
-                            <form action="{{ route('admin.pengumuman.destroy', $item->id) }}" method="POST" class="d-inline"
-                                  onsubmit="return confirm('Yakin ingin menghapus pengumuman ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm btn-icon" title="Hapus"
-                                        style="padding: 0.25rem; width: 34px; height: 34px; display: flex; align-items: center; justify-content: center;">
-                                    <i data-feather="trash-2"></i>
-                                </button>
-                            </form>
+                <div class="card-body">
+                    @if(session('success'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            {{ session('success') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                    </td>
-                </tr>
-                @empty
-                <tr>
-                    <td colspan="5" class="text-center text-muted">Belum ada pengumuman.</td>
-                </tr>
-                @endforelse
-            </tbody>
-        </table>
+                    @endif
+
+                    @if(session('error'))
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {{ session('error') }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endif
+
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Gambar</th>
+                                    <th>Judul</th>
+                                    <th>Tanggal</th>
+                                    <th>Isi</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @forelse($items as $index => $item)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>
+                                            @if($item->gambar)
+                                                <img src="{{ asset('storage/' . $item->gambar) }}"
+                                                     alt="{{ $item->judul }}"
+                                                     class="img-thumbnail"
+                                                     width="80">
+                                            @else
+                                                <span class="text-muted">Tidak ada gambar</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <strong>{{ Str::limit($item->judul, 50) }}</strong>
+                                        </td>
+                                        <td>
+                                            {{ $item->tanggal ? \Carbon\Carbon::parse($item->tanggal)->format('d/m/Y') : 'Tidak ada tanggal' }}
+                                        </td>
+                                        <td>
+                                            {{ Str::limit(strip_tags($item->isi), 100) }}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{{ route('admin.pengumuman.edit', $item->id) }}"
+                                                   class="btn btn-warning btn-sm">
+                                                    <i data-feather="edit-2" class="icon-xs"></i>
+                                                </a>
+
+                                                <form action="{{ route('admin.pengumuman.destroy', $item->id) }}"
+                                                      method="POST"
+                                                      class="d-inline"
+                                                      onsubmit="return confirm('Apakah Anda yakin ingin menghapus pengumuman ini?')">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">
+                                                        <i data-feather="trash-2" class="icon-xs"></i>
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="6" class="text-center text-muted">
+                                            Belum ada pengumuman
+                                        </td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
 <script>
-    // Inisialisasi Feather Icons
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof feather !== 'undefined') {
             feather.replace();

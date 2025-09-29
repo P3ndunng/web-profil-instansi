@@ -182,16 +182,16 @@
     <div class="search-modal" id="searchModal">
     <div class="search-container">
         <button class="close-search" onclick="closeSearchModal()">&times;</button>
-        
+
         <div class="search-header">
             <h3>Pencarian</h3>
             <p style="color: #666; font-size: 14px; text-align: center; margin: 0;">Cari informasi, artikel, layanan, atau konten lainnya</p>
         </div>
 
         <div class="search-input-group">
-            <input type="text" 
-                   class="search-input" 
-                   id="searchInput" 
+            <input type="text"
+                   class="search-input"
+                   id="searchInput"
                    placeholder="Ketik kata kunci pencarian..."
                    autocomplete="off">
             <button class="search-btn" onclick="performSearch()">
@@ -248,7 +248,7 @@
             <!-- Slides -->
             <div class="carousel-inner" role="listbox">
                 @forelse($sliders as $index => $slider)
-                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}" 
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}"
                         style="background-image: url('{{ asset('storage/' . $slider->gambar) }}')">
                         <div class="carousel-container text-center">
                             @if($slider->judul)
@@ -399,7 +399,7 @@
     </div>
     </section>
 
-    <!-- ======= Informasi Terbaru Section ======= -->
+  <!-- ======= Informasi Terbaru Section ======= -->
     <section id="informasi-terbaru" class="py-5 bg-light">
         <div class="container" data-aos="fade-up">
             <!-- Judul -->
@@ -412,61 +412,138 @@
             <div class="row">
                 <!-- Sidebar Kategori -->
                 <div class="col-lg-3 mb-4">
-                    <div class="list-group shadow rounded overflow-hidden">
-                        <a href="{{ route('infoP.berita') }}" class="list-group-item list-group-item-action active" aria-current="true">
+                    <div class="list-group shadow rounded overflow-hidden" id="kategori-tab">
+                        <!-- Berita -->
+                        <a href="#" class="list-group-item list-group-item-action kategori-berita active" data-target="berita">
                             <i class="fas fa-newspaper me-2"></i> Berita
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+
+                        <!-- Agenda -->
+                        <a href="#" class="list-group-item list-group-item-action kategori-agenda" data-target="agenda">
                             <i class="far fa-calendar-alt me-2"></i> Agenda
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-success text-white">
+
+                        <!-- Pengumuman -->
+                        <a href="#" class="list-group-item list-group-item-action kategori-pengumuman" data-target="pengumuman">
                             <i class="fas fa-bullhorn me-2"></i> Pengumuman
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action bg-dark text-white">
+
+                        <!-- Artikel -->
+                        <a href="#" class="list-group-item list-group-item-action kategori-artikel" data-target="artikel">
                             <i class="fas fa-book-open me-2"></i> Artikel
                         </a>
                     </div>
                 </div>
 
-                <!-- Konten Informasi -->
-                    <!-- Berita Terbaru -->
-                        <div class="col-lg-9 mt-5">
-                            <div class="row g-4">
-                                @forelse ($beritaTerbaru as $berita)
+
+                <!-- Konten Dinamis -->
+                <div class="col-lg-9 mt-3">
+                    <!-- BERITA -->
+                    <div class="tab-content" id="tab-berita">
+                        <div class="row g-4">
+                            @forelse($beritaTerbaru as $item)
                                 <div class="col-md-6 col-lg-4">
                                     <div class="card h-100 border-0 shadow-sm">
-                                    @if ($berita->gambar)
-                                        <img src="{{ asset('storage/' . $berita->gambar) }}" class="card-img-top" alt="{{ $berita->judul }}" style="height: 200px; object-fit: cover;">
-                                    @else
-                                        <img src="{{ asset('themes/medicio/assets/img/no-image.png') }}" class="card-img-top" alt="No Image" style="height: 200px; object-fit: cover;">
-                                    @endif
-                                    <div class="card-body d-flex flex-column">
-                                        <h6 class="card-title flex-grow-1">{{ Str::limit($berita->judul, 60) }}</h6>
-                                        <small class="text-muted">
-                                        <i class="far fa-calendar-alt me-1"></i>
-                                        {{ $berita->created_at->translatedFormat('l, d F Y') }}
-                                        </small>
-                                    </div>
+                                        <img src="{{ $item->gambar ? asset('storage/'.$item->gambar) : asset('themes/medicio/assets/img/no-image.png') }}"
+                                            class="card-img-top" style="height:200px;object-fit:cover;">
+                                        <div class="card-body">
+                                            <h6 class="card-title">{{ Str::limit($item->judul, 60) }}</h6>
+                                            <small class="text-muted">
+                                                <i class="far fa-calendar-alt me-1"></i>
+                                                {{ $item->created_at->translatedFormat('l, d F Y') }}
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
-                                @empty
-                                <div class="col-12 text-center">
-                                    <p class="text-muted">Belum ada berita tersedia</p>
+                            @empty
+                                <div class="col-12 text-center text-muted">Belum ada berita</div>
+                            @endforelse
+                        </div>
+                    </div>
+
+                    <!-- ARTIKEL -->
+                    <div class="tab-content d-none" id="tab-artikel">
+                        <div class="row g-4">
+                            @forelse($artikelTerbaru as $item)
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        <img src="{{ $item->gambar ? asset('storage/'.$item->gambar) : asset('themes/medicio/assets/img/no-image.png') }}"
+                                            class="card-img-top" style="height:200px;object-fit:cover;">
+                                        <div class="card-body">
+                                            <h6 class="card-title">{{ Str::limit($item->judul, 60) }}</h6>
+                                            <small class="text-muted">
+                                                <i class="far fa-calendar-alt me-1"></i>
+                                                {{ $item->created_at->translatedFormat('l, d F Y') }}
+                                            </small>
+                                        </div>
+                                    </div>
                                 </div>
-                                @endforelse
+                            @empty
+                                <div class="col-12 text-center text-muted">Belum ada artikel</div>
+                            @endforelse
+                        </div>
+                    </div>
+
+                    <!-- AGENDA -->
+                    <div class="tab-content d-none" id="tab-agenda">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="ratio ratio-16x9 shadow rounded">
+                                    <iframe
+                                        src="https://calendar.google.com/calendar/embed?src=bbptuhptbaturraden@gmail.com&ctz=Asia%2FJakarta"
+                                        style="border:0"
+                                        width="100%"
+                                        height="600"
+                                        frameborder="0"
+                                        scrolling="no">
+                                    </iframe>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                    <!-- Tombol Lihat Semua Berita -->
-                    <div class="text-center mt-4">
-                        <a href="{{ route('infoP.berita') }}" class="btn btn-primary">
-                            <i class="fas fa-eye me-2"></i>Lihat Semua Berita
-                        </a>
+
+                    <!-- PENGUMUMAN -->
+                    <div class="tab-content d-none" id="tab-pengumuman">
+                        <div class="row g-4">
+                            @forelse($pengumumanTerbaru as $item)
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="card h-100 border-0 shadow-sm">
+                                        @if ($item->gambar)
+                                            <img src="{{ asset('storage/' . $item->gambar) }}"
+                                                alt="{{ $item->judul }}"
+                                                class="card-img-top"
+                                                style="height:200px;object-fit:cover;">
+                                        @else
+                                            <img src="{{ asset('themes/medicio/assets/img/no-image.png') }}"
+                                                alt="No Image"
+                                                class="card-img-top"
+                                                style="height:200px;object-fit:cover;">
+                                        @endif
+                                        <div class="card-body">
+                                            <h6 class="card-title">{{ Str::limit($item->judul, 60) }}</h6>
+                                            <small class="text-muted">
+                                                <i class="far fa-calendar-alt me-1"></i>
+                                                {{ $item->created_at->translatedFormat('l, d F Y') }}
+                                            </small>
+                                            <p class="mt-2 text-muted">
+                                                {{ Str::limit(strip_tags($item->isi), 80) }}
+                                            </p>
+                                            <a href="{{ route('infoP.pengumuman') }}" class="stretched-link text-decoration-none">
+                                                Baca selengkapnya
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="col-12 text-center text-muted">Belum ada pengumuman</div>
+                            @endforelse
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section><!-- End Informasi Section -->
+    </section>
 
    <!-- ======= Profil BBPTUHPT Section ======= -->
     <section id="features" class="features py-5">

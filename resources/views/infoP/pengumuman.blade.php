@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>BBPTUHPT Baturraden - Profil</title>
+  <title>BBPTUHPT Baturraden - Berita Terbaru</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -31,38 +31,122 @@
   <!-- Template Main CSS File -->
   <link href="themes/medicio/assets/css/style2.css" rel="stylesheet">
 
-  <!-- Custom CSS File -->
-  <link href="css/custom.css" rel="stylesheet">
+  <style>
+    /* Grid berita */
+    .grid-berita {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* selalu 3 kolom di desktop */
+      gap: 20px;
+      margin-bottom: 30px;
+    }
 
-  <!-- =======================================================
-  * Template Name: Medicio
-  * Updated: Mar 10 2023 with Bootstrap v5.2.3
-  * Template URL: https://bootstrapmade.com/medicio-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+    /* Card berita */
+    .berita-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+      min-height: 320px;       /* tinggi minimum supaya seragam */
+    }
+
+    .berita-card:hover {
+      transform: translateY(-4px);
+    }
+
+    /* Thumbnail */
+    .berita-thumb img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Konten */
+    .berita-content {
+      padding: 12px 14px 16px;
+      flex-grow: 1;              /* isi memenuhi ruang */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .berita-content h3 {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .berita-content h3 a {
+      text-decoration: none;
+      color: #2F451E;
+    }
+
+    .berita-content h3 a:hover {
+      color: #00a859;
+    }
+
+    .berita-content .tanggal {
+      font-size: 12px;
+      color: #666;
+      margin-top: auto;          /* dorong ke bawah */
+    }
+
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #2F451E;
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 28px;
+    }
+
+    .berita-terbaru {
+      padding: 60px 0;
+      background-color: #f8f9fa;
+    }
+
+    /* Perbaikan untuk judul yang tertutup navbar */
+    .main-content {
+      padding-top: 150px; /* Memberikan ruang agar konten tidak tertutup navbar */
+    }
+
+    @media (max-width: 992px) {
+      .main-content {
+        padding-top: 120px; /* Lebih kecil untuk tampilan mobile */
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- ======= Top Bar ======= -->
-<div id="topbar" class="d-flex align-items-center fixed-top">
-  <div class="container d-flex justify-content-center justify-content-md-start">
-    <div class="topbar-info">
-      Jam Layanan: Senin - Kamis: 08.00 - 15.00, Jumat : 08.00 - 15.30
+  <!-- ======= Top Bar ======= -->
+  <div id="topbar" class="d-flex align-items-center fixed-top">
+    <div class="container d-flex justify-content-start">
+      <div class="topbar-info">
+        Jam Layanan: Senin - Kamis: 08.00 - 15.00, Jumat : 08.00 - 15.30
+      </div>
     </div>
   </div>
-</div>
 
-<!-- ======= Header ======= -->
-<header id="header" class="d-flex align-items-center fixed-top">
+<!-- Header / Navbar -->
+<header id="header" class="d-flex align-items-center">
   <div class="container-fluid d-flex align-items-center justify-content-between">
 
     <!-- Logo dan Instansi -->
-    <div class="logo d-flex align-items-center">
-      <img src="themes/medicio/assets/img/logo.png" alt="Logo" class="logo-img" id="logo-img">
-      <div class="vertical-line mx-2" id="logo-line"></div>
-      <img src="themes/medicio/assets/img/header.png" alt="Header Text Image" class="header-text-img">
+    <div class="logo d-flex align-items-center" style="padding-left: 20px;">
+      <img src="themes/medicio/assets/img/logo.png" alt="Logo" id="logo-img" style="height: 100px;">
+
+      <!-- Garis Vertikal -->
+      <div class="vertical-line mx-2" id="logo-line" style="height: 60px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
+
+      <!-- Header Image -->
+      <img src="themes/medicio/assets/img/header.png" alt="Header Text Image" class="ms-2" style="width: 380px; max-height:60px;">
     </div>
 
     <!-- Navbar Dinamis -->
@@ -132,7 +216,8 @@
 
         <!-- Search Icon -->
         <li class="d-flex align-items-center">
-          <div class="vertical-line me-2" id="search-line"></div>
+          <!-- Garis Vertikal kiri Search -->
+          <div class="vertical-line me-2" id="search-line" style="height: 30px; width: 2px; background: #fff; transition: all 0.3s ease;"></div>
           <a href="#" class="search-icon"><i class="bi bi-search"></i></a>
         </li>
       </ul>
@@ -142,116 +227,47 @@
   </div>
 </header>
 
-   <main id="main" class="main-content">
-    <!-- ======= Profile Section ======= -->
-    <section class="profile-section">
+
+ <main id="main" class="main-content">
+    <!-- ======= Pengumuman Section ======= -->
+    <section id="pengumuman" class="pengumuman py-5">
         <div class="container">
+            <h2 class="section-title mb-4">Pengumuman</h2>
 
-        <!-- Profile Content -->
-        <div class="profile-content">
-            <!-- Profile Title and Date -->
-            <div class="profile-header-content">
-            <h1 class="profile-title">Profil BBPTUHPT</h1>
-            <div class="profile-date">
-                <i class="far fa-calendar-alt"></i>
-                <span>Senin, 15 May 2023</span>
-            </div>
-            </div>
-
-            <!-- Profile Info Section with Logo and Text -->
-            <div class="profile-main">
-            <div class="row align-items-start">
-                <div class="col-lg-3 col-md-4 text-center mb-4">
-                <div class="profile-logo-container">
-                    <img src="themes/medicio/assets/img/profil.png" alt="Logo BBPTUHPT" class="profile-logo-img">
-                </div>
-                </div>
-                <div class="col-lg-9 col-md-8">
-                <div class="profile-intro-section">
-                    <h2 class="profile-intro-title">PROFIL BBPTUHPT BATURRADEN</h2>
-                    <p class="profile-intro-text">Selamat datang di Balai Besar Pembibitan Ternak Unggul dan Hijauan Pakan Ternak (BBPTUHPT) Baturraden sebagai salah satu dari Unit Pelaksana Teknis (UPT) lingkup Direktorat Jendral Peternakan dan Kesehatan Hewan di bawah Kementrian Pertanian RI.</p>
-                </div>
-                </div>
-            </div>
+            <div class="grid-berita">
+                @forelse ($pengumumen as $item)
+                    <div class="berita-card">
+                        <div class="berita-thumb">
+                            @if ($item->gambar)
+                                <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->judul }}">
+                            @else
+                                <img src="{{ asset('themes/medicio/assets/img/no-image.png') }}" alt="No Image">
+                            @endif
+                        </div>
+                        <div class="berita-content">
+                            <h3>{{ $item->judul }}</h3>
+                            <p class="tanggal">
+                                <i class="bi bi-calendar"></i>
+                                {{ $item->created_at->translatedFormat('l, d F Y') }}
+                            </p>
+                            <p class="isi">{{ Str::limit(strip_tags($item->isi), 120) }}</p>
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-center text-muted">Belum ada pengumuman</p>
+                @endforelse
             </div>
 
-            <!-- Video Section -->
-            <div class="video-section">
-            <div class="video-container">
-                <div class="embed-responsive embed-responsive-16by9">
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/hx3WtWYIDkQ" allowfullscreen></iframe>
-                </div>
-            </div>
-            <p class="video-caption">FASILITAS LABORATORIUM</p>
-            </div>
-
-            <!-- Content Paragraphs -->
-            <div class="profile-description">
-            <p>Sebagai UPT, BBPTUHPT Baturraden mempunyai sejarah yang panjang dan telah mengalami banyak perubahan nama, tugas pokok dan fungsinya. Sejak diresmikan sebagai Induk Taman Ternak Baturraden oleh Wakil Presiden RI Pertama (Drs. M. Hatta) tanggal 23 Juli 1953, kemudian diadakan Unit Usaha Ternak (sapi perah dan babi) PERHEWANI. Pada tanggal 25 Mei 1978 sesuai dengan Surat Keputusan Menteri Pertanian RI Nomor 313/Kpts/Org/5/78 berubah tugas dan fungsinya menjadi Balai Pembibitan Ternak dan Hijauan Makanan Ternak (BPTHMT) Baturraden. Pada tanggal 24 Juli 2002, sesuai Surat Keputusan Menteri Pertanian RI Nomor 290 Tahun 2002, BPTHMT berubah menjadi Balai Pembibitan Ternak Unggul Sapi Perah (BPTU Sapi Perah) dan sampai diresmikannya menjadi Balai Besar Pembibitan Ternak Unggul Sapi Perah (BBPTU Sapi Perah) tanggal 30 Desember 2003, sesuai Surat Keputusan Menteri Pertanian RI Nomor 630/Kpts/OT.140/12/2003.</p>
-
-            <p>Kemudian berdasarkan Peraturan Menteri Pertanian Nomor 55/Permentan/OT.140/5/2013 tanggal 24 Mei 2013, BBPTU Sapi Perah Baturraden berubah menjadi Balai Besar Pembibitan Ternak Unggul dan Hijauan Pakan Ternak (BBPTUHPT) Baturraden yang mempunyai tugas tambahan selain pengembangan bibit sapi perah juga kambing perah unggul serta produksi dan distribusi benih/bibit hijauan pakan ternak.</p>
-
-            <p>Dan untuk saat ini Organisasi dan Tata Kerja BBPTUHPT Baturraden mengacu pada Peraturan Menteri Pertanian Nomor 12 Tahun 2023 tentang Organisasi dan Tata Kerja Unit Pelaksana Teknis Lingkup Direktorat Jenderal Peternakan dan Kesehatan Hewan, Indonesia, Kementerian Pertanian.</p>
+            <div class="mt-4">
+                {{ $pengumumen->links() }}
             </div>
         </div>
-        </div>
-    </section><!-- End Profile Section -->
-
-    <!-- Contact Info Section -->
-    <section class="contact-info">
-    <div class="container contact-container">
-
-        <!-- Kolom kiri: alamat, kontak, jam -->
-        <div class="contact-text">
-        <!-- Alamat Kantor Pusat -->
-        <h4>Alamat Kantor Pusat</h4>
-        <p>
-            Jalan Peternakan No 1. Desa Kemutug Lor, Kec. Baturraden, Banyumas <br>
-            Kode Pos 53151 atau Kotak Pos 113 Purwokerto Kode Pos 53101, Jawa Tengah
-        </p>
-
-        <!-- Hubungi Kami -->
-        <h4>Hubungi Kami</h4>
-        <p>
-            Telp. (0281) 681716 <br>
-            Fax. (0281) 681037
-        </p>
-        <p>
-            Email: <a href="mailto:bbptuhptbaturraden@gmail.com">bbptuhptbaturraden@gmail.com</a>
-        </p>
-        <p>
-            Website: <a href="https://bbptusapiperah.ditjenpkh.pertanian.go.id/index.php" target="_blank" rel="noopener">
-            https://bbptusapiperah.ditjenpkh.pertanian.go.id/index.php
-            </a>
-        </p>
-
-        <!-- Jam Pelayanan -->
-        <h4>Jam Pelayanan</h4>
-        <p>
-            <strong>Senin s.d Kamis</strong><br>
-            Buka pukul : 08.00 - 15.00 WIB<br>
-            Istirahat : 12.00 - 13.00 WIB
-        </p>
-        <p>
-            <strong>Jumat</strong><br>
-            Buka pukul : 08.00 - 15.30 WIB<br>
-            Istirahat : 11.30 - 13.00 WIB
-        </p>
-        </div>
-
-        <!-- Kolom kanan: Standarisasi -->
-        <div class="contact-image">
-        <h4>Standarisasi Pelayanan</h4>
-        <img src="themes/medicio/assets/img/standarisasi_pelayanan.png" alt="Standarisasi Pelayanan">
-        </div>
-
-    </div>
     </section>
+</main><!-- End #main -->
 
-    </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+    <footer id="footer">
     <div class="footer-top">
         <div class="container">
         <div class="row">
@@ -309,7 +325,7 @@
             <div class="jam-pelayanan">
                 <p><i class="bi bi-clock"></i> Jam Pelayanan</p>
                 <span>Senin s.d Kamis &nbsp; 08.00 s.d 15.00 WIB</span><br>
-                <span>Jum'at &nbsp; 08.00 s.d 15.30 WIB</span>
+                <span>Jum’at &nbsp; 08.00 s.d 15.30 WIB</span>
             </div>
 
             <div class="sertifikasi">
@@ -350,46 +366,6 @@
 
   <!-- Template Main JS File -->
   <script src="themes/medicio/assets/js/main.js"></script>
-
-  <!-- Custom JavaScript for Dropdown -->
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      // Handle dropdown menus
-      const dropdowns = document.querySelectorAll('.dropdown');
-
-      dropdowns.forEach(dropdown => {
-        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
-
-        dropdown.addEventListener('mouseenter', function() {
-          dropdownMenu.style.display = 'block';
-        });
-
-        dropdown.addEventListener('mouseleave', function() {
-          dropdownMenu.style.display = 'none';
-        });
-      });
-
-      // Handle scroll effects
-      window.addEventListener('scroll', function() {
-        const header = document.getElementById('header');
-        if (window.scrollY > 100) {
-          header.classList.add('scrolled');
-        } else {
-          header.classList.remove('scrolled');
-        }
-      });
-
-      // Mobile navigation toggle
-      const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
-      const navbar = document.querySelector('#navbar ul');
-
-      if (mobileNavToggle) {
-        mobileNavToggle.addEventListener('click', function() {
-          navbar.classList.toggle('navbar-mobile');
-        });
-      }
-    });
-  </script>
 
 </body>
 

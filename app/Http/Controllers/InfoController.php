@@ -23,6 +23,57 @@ class InfoController extends Controller
     }
 
     // ========================
+    // PENGUMUMAN PUBLIK - untuk halaman pengumuman publik
+    // ========================
+    public function pengumumanPublik()
+    {
+        $pengumumen = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Pengumuman'))
+            ->latest()
+            ->paginate(9);
+
+        return view('infoP.pengumuman', compact('pengumumen'));
+    }
+
+    // ========================
+    // ARTIKEL PUBLIK
+    // ========================
+    public function artikelPublik()
+    {
+        $artikels = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Artikel'))
+            ->latest()
+            ->paginate(9);
+
+        return view('infoP.artikel', compact('artikels'));
+    }
+
+    // ========================
+    // DETAIL METHODS
+    // ========================
+    public function detailBerita($id)
+    {
+        $berita = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Berita'))
+            ->findOrFail($id);
+
+        return view('infoP.berita.detail', compact('berita'));
+    }
+
+    public function detailPengumuman($id)
+    {
+        $pengumuman = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Pengumuman'))
+            ->findOrFail($id);
+
+        return view('infoP.pengumuman.detail', compact('pengumuman'));
+    }
+
+    public function detailArtikel($id)
+    {
+        $artikel = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Artikel'))
+            ->findOrFail($id);
+
+        return view('infoP.artikel.detail', compact('artikel'));
+    }
+
+    // ========================
     // ADMIN BERITA - untuk Dashboard
     // ========================
     public function indexBerita()
@@ -185,9 +236,125 @@ class InfoController extends Controller
     }
 
     // ========================
-    // METHODS LAINNYA (Agenda, Artikel, Pengumuman)
+    // ADMIN PENGUMUMAN
     // ========================
+    public function indexPengumuman()
+    {
+        $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Pengumuman'))
+            ->latest()
+            ->get();
 
+        return view('infos.pengumuman.index', compact('items'));
+    }
+
+    public function createPengumuman()
+    {
+        return view('infos.pengumuman.create');
+    }
+
+    public function storePengumuman(Request $request)
+    {
+        try {
+            // Validasi
+            $validated = $request->validate([
+                'judul' => 'required|string|max:255',
+                'isi' => 'required|string',
+                'tanggal' => 'nullable|date',
+                'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            ]);
+
+            // Cari atau buat kategori Pengumuman
+            $kategori = Kategori::firstOrCreate(['nama' => 'Pengumuman']);
+
+            $data = [
+                'judul' => $validated['judul'],
+                'isi' => $validated['isi'],
+                'tanggal' => $validated['tanggal'] ?: now(),
+                'kategori_id' => $kategori->id,
+            ];
+
+            if ($request->hasFile('gambar')) {
+                $data['gambar'] = $request->file('gambar')->store('pengumuman', 'public');
+            }
+
+            Info::create($data);
+
+            return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil ditambahkan');
+
+        } catch (\Exception $e) {
+            Log::error('Error store pengumuman', ['message' => $e->getMessage()]);
+            return redirect()->back()
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage())
+                ->withInput();
+        }
+    }
+
+    public function editPengumuman($id)
+    {
+        $item = Info::findOrFail($id);
+        return view('infos.pengumuman.edit', compact('item'));
+    }
+
+    public function updatePengumuman(Request $request, $id)
+    {
+        try {
+            $item = Info::findOrFail($id);
+
+            $validated = $request->validate([
+                'judul' => 'required|string|max:255',
+                'isi' => 'required|string',
+                'tanggal' => 'nullable|date',
+                'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            ]);
+
+            $data = [
+                'judul' => $validated['judul'],
+                'isi' => $validated['isi'],
+                'tanggal' => $validated['tanggal'],
+            ];
+
+            if ($request->hasFile('gambar')) {
+                if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+                    Storage::disk('public')->delete($item->gambar);
+                }
+                $data['gambar'] = $request->file('gambar')->store('pengumuman', 'public');
+            }
+
+            $item->update($data);
+
+            return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil diperbarui');
+
+        } catch (\Exception $e) {
+            Log::error('Error update pengumuman', ['message' => $e->getMessage(), 'id' => $id]);
+            return redirect()->back()
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage())
+                ->withInput();
+        }
+    }
+
+    public function destroyPengumuman($id)
+    {
+        try {
+            $item = Info::findOrFail($id);
+
+            if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
+                Storage::disk('public')->delete($item->gambar);
+            }
+
+            $item->delete();
+
+            return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil dihapus');
+
+        } catch (\Exception $e) {
+            Log::error('Error hapus pengumuman', ['message' => $e->getMessage(), 'id' => $id]);
+            return redirect()->back()
+                ->with('error', 'Terjadi kesalahan: ' . $e->getMessage());
+        }
+    }
+
+    // ========================
+    // ADMIN AGENDA
+    // ========================
     public function indexAgenda()
     {
         $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Agenda'))
@@ -363,97 +530,5 @@ class InfoController extends Controller
         $item->delete();
 
         return redirect()->route('admin.artikel.index')->with('success','Artikel berhasil dihapus');
-    }
-
-    // ========================
-    // ADMIN PENGUMUMAN
-    // ========================
-    public function indexPengumuman()
-    {
-        $items = Info::whereHas('kategori', fn($q) => $q->where('nama', 'Pengumuman'))
-            ->latest()
-            ->get();
-
-        return view('infos.pengumuman.index', compact('items'));
-    }
-
-    public function createPengumuman()
-    {
-        return view('infos.pengumuman.create');
-    }
-
-    public function storePengumuman(Request $request)
-    {
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required',
-            'tanggal' => 'nullable|date',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
-
-        $kategori = Kategori::firstOrCreate(['nama' => 'Pengumuman']);
-
-        $data = [
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'tanggal' => $request->tanggal ?: now(),
-            'kategori_id' => $kategori->id,
-        ];
-
-        if ($request->hasFile('gambar')) {
-            $data['gambar'] = $request->file('gambar')->store('pengumuman', 'public');
-        }
-
-        Info::create($data);
-
-        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil ditambahkan');
-    }
-
-    public function editPengumuman($id)
-    {
-        $item = Info::findOrFail($id);
-        return view('infos.pengumuman.edit', compact('item'));
-    }
-
-    public function updatePengumuman(Request $request, $id)
-    {
-        $item = Info::findOrFail($id);
-
-        $request->validate([
-            'judul' => 'required|string|max:255',
-            'isi' => 'required',
-            'tanggal' => 'nullable|date',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
-
-        $data = [
-            'judul' => $request->judul,
-            'isi' => $request->isi,
-            'tanggal' => $request->tanggal,
-        ];
-
-        if ($request->hasFile('gambar')) {
-            if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
-                Storage::disk('public')->delete($item->gambar);
-            }
-            $data['gambar'] = $request->file('gambar')->store('pengumuman', 'public');
-        }
-
-        $item->update($data);
-
-        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil diperbarui');
-    }
-
-    public function destroyPengumuman($id)
-    {
-        $item = Info::findOrFail($id);
-
-        if ($item->gambar && Storage::disk('public')->exists($item->gambar)) {
-            Storage::disk('public')->delete($item->gambar);
-        }
-
-        $item->delete();
-
-        return redirect()->route('admin.pengumuman.index')->with('success', 'Pengumuman berhasil dihapus');
     }
 }

@@ -42,14 +42,23 @@ Route::get('/berita/{id}', [InfoController::class, 'detailBerita'])->name('infoP
 Route::get('/pengumuman', [InfoController::class, 'pengumumanPublik'])->name('infoP.pengumuman');
 Route::get('/pengumuman/{id}', [InfoController::class, 'detailPengumuman'])->name('infoP.pengumuman.detail');
 
-// Publik Artikel
-Route::get('/artikel', [InfoController::class, 'artikelPublik'])->name('infoP.artikel');
-Route::get('/artikel/{id}', [InfoController::class, 'detailArtikel'])->name('infoP.artikel.detail');
+// Publik Artikel - MENGGUNAKAN ArtikelController
+Route::get('/artikel', [ArtikelController::class, 'artikelPublik'])->name('infoP.artikel');
+Route::get('/artikel/{id}', [ArtikelController::class, 'detail'])->name('infoP.artikel-detail');
 
 // Publik Agenda (redirect ke Google Calendar)
 Route::get('/agenda', function () {
     return redirect()->away('https://calendar.google.com/calendar/u/0/r?cid=bbptuhptbaturraden@gmail.com&pli=1');
 })->name('infoP.agenda');
+
+/*
+|--------------------------------------------------------------------------
+| API PUBLIK (untuk frontend)
+|--------------------------------------------------------------------------
+*/
+Route::prefix('api')->name('api.')->group(function () {
+    Route::get('/menus', [MenuController::class, 'getMenusForNavbar'])->name('menus');
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -63,7 +72,13 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     // === MASTER DATA ===
     Route::resource('users', UserController::class);
     Route::resource('kategoris', KategoriController::class);
+
+    // Menu dengan fitur tambahan
     Route::resource('menu', MenuController::class);
+    Route::patch('menu/{id}/toggle', [MenuController::class, 'toggleStatus'])->name('menu.toggle');
+    Route::post('menu/reorder', [MenuController::class, 'reorder'])->name('menu.reorder');
+    Route::post('menu/{id}/duplicate', [MenuController::class, 'duplicate'])->name('menu.duplicate');
+
     Route::resource('kontak', KontakController::class);
     Route::resource('media', MediaController::class);
     Route::resource('galeri', GaleriController::class);
@@ -88,13 +103,13 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::put('/pengumuman/{id}', [InfoController::class, 'updatePengumuman'])->name('pengumuman.update');
     Route::delete('/pengumuman/{id}', [InfoController::class, 'destroyPengumuman'])->name('pengumuman.destroy');
 
-    // === ARTIKEL ===
-    Route::get('/artikel', [InfoController::class, 'indexArtikel'])->name('artikel.index');
-    Route::get('/artikel/create', [InfoController::class, 'createArtikel'])->name('artikel.create');
-    Route::post('/artikel', [InfoController::class, 'storeArtikel'])->name('artikel.store');
-    Route::get('/artikel/{id}/edit', [InfoController::class, 'editArtikel'])->name('artikel.edit');
-    Route::put('/artikel/{id}', [InfoController::class, 'updateArtikel'])->name('artikel.update');
-    Route::delete('/artikel/{id}', [InfoController::class, 'destroyArtikel'])->name('artikel.destroy');
+    // === ARTIKEL - MENGGUNAKAN ArtikelController ===
+    Route::get('/artikel', [ArtikelController::class, 'index'])->name('artikel.index');
+    Route::get('/artikel/create', [ArtikelController::class, 'create'])->name('artikel.create');
+    Route::post('/artikel', [ArtikelController::class, 'store'])->name('artikel.store');
+    Route::get('/artikel/{id}/edit', [ArtikelController::class, 'edit'])->name('artikel.edit');
+    Route::put('/artikel/{id}', [ArtikelController::class, 'update'])->name('artikel.update');
+    Route::delete('/artikel/{id}', [ArtikelController::class, 'destroy'])->name('artikel.destroy');
 
     // === AGENDA ===
     Route::get('/agenda', [InfoController::class, 'indexAgenda'])->name('agenda.index');
@@ -103,4 +118,7 @@ Route::middleware(['auth'])->prefix('admin')->as('admin.')->group(function () {
     Route::get('/agenda/{id}/edit', [InfoController::class, 'editAgenda'])->name('agenda.edit');
     Route::put('/agenda/{id}', [InfoController::class, 'updateAgenda'])->name('agenda.update');
     Route::delete('/agenda/{id}', [InfoController::class, 'destroyAgenda'])->name('agenda.destroy');
+
+    // === CKEDITOR IMAGE UPLOAD ===
+    Route::post('/ckeditor/upload', [CkeditorUploadController::class, 'upload'])->name('ckeditor.upload');
 });

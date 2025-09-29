@@ -96,8 +96,9 @@ class ArtikelController extends Controller
     // =======================
     public function artikelPublik()
     {
+        // Tetap menggunakan $artikels (sesuai semantik untuk artikel)
         $artikels = Artikel::orderBy('created_at', 'desc')->paginate(9);
-        return view('infoP.artikel.index', compact('artikels'));
+        return view('infoP.artikel', compact('artikels'));
     }
 
     public function detail($id)
@@ -108,6 +109,6 @@ class ArtikelController extends Controller
             ->limit(5)
             ->get();
 
-        return view('infoP.artikel.detail', compact('artikel', 'artikelLainnya'));
+        return view('infoP.artikel-detail', compact('artikel', 'artikelLainnya'));
     }
 }

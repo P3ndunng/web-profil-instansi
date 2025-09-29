@@ -10,7 +10,7 @@
         <meta content="Premium Multipurpose Admin & Dashboard Template" name="description" />
         <meta content="Themesbrand" name="author" />
         <!-- App favicon -->
-        <link rel="shortcut icon" href="themes/minia/minia/assets/images/favicon.ico">
+        <link rel="shortcut icon" href="themes/minia/minia/assets/images/logo.png">
 
         <!-- preloader css -->
         <link rel="stylesheet" href="themes/minia/minia/assets/css/preloader.min.css" type="text/css" />

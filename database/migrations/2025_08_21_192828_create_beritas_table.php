@@ -9,13 +9,15 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
         Schema::create('beritas', function (Blueprint $table) {
             $table->id();
-            $table->string('judul');
-            $table->text('isi');
-            $table->string('gambar')->nullable();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('content');
+            $table->string('author')->nullable();
+            $table->timestamp('published_at')->nullable();
             $table->timestamps();
         });
     }
